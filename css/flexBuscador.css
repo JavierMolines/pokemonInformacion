@@ -1,0 +1,99 @@
+#contenedor_filtro_pokemon {
+
+    z-index: 2;
+    padding: 1%;
+    bottom: 0%;
+    left: 0%;
+    width: 25%;
+    position: fixed;
+    background-color: white;
+
+}
+
+.select_filtro_pokemon {
+
+    width: 98%;
+    float: left;
+    margin: 1%;
+    padding: 0.3%;
+    font-size: 20px;
+
+}
+
+.select_filtro_pokemon option{
+
+    padding: 0.3%;
+    font-size: 13px;
+
+}
+
+.fondo_boton_aceptado {
+
+    color: wheat;
+    background-color: #cc0099;
+    cursor: pointer;
+
+}
+
+.fondo_boton_aceptado:hover {
+
+    background-color: #800060;
+
+}
+
+#contenedor_filtro_pokemon button {
+
+    border: none;
+    float: left;
+    padding: 0.3%;
+    margin: 1%;
+    width: 98%;
+    font-size: 20px;
+
+}
+
+#contenedor_filtro_pokemon input {
+
+    float: left;
+    padding: 0.3%;
+    margin: 1%;
+    width: 97%;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+#contenedor_filtro_pokemon h1 {
+
+    color: #cc0099;
+
+}
+
+@media screen and (max-width: 1200px){
+
+    #contenedor_filtro_pokemon {
+
+        width: 40%;
+
+    }
+ 
+    #contenedor_filtro_pokemon input, #contenedor_filtro_pokemon button, .select_filtro_pokemon {
+
+        font-size: 15px;
+
+    }
+
+    #contenedor_filtro_pokemon h1 {
+
+        font-size: 25px;
+
+    }
+
+    .select_filtro_pokemon option{
+
+        padding: 0px;
+    
+    }
+
+
+}

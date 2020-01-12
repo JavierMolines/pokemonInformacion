@@ -1,0 +1,25 @@
+{
+
+    "textos" : [ 
+
+        ["tituloPrincipalConTemplate", "Bienvenido "], 
+        ["textoSeleccionListBox", "Seleccione rango"],
+        ["navegacionBotonNoLogueadoA", "Iniciar"],
+        ["navegacionBotonNoLogueadoB", "Registrarse"],
+        ["popupGeneradoIniciar", "Conectarse"],
+        ["popupGeneradoRegistrarse", "Registrarse"],
+        ["popupGeneradoCamposPlaceHolderUsuario", "Ingrese usuario"],
+        ["popupGeneradoCamposPlaceHolderPassword", "Ingrese password"],
+        ["popupGeneradoCamposPlaceHolderConfirmPassword", "Ingrese nuevamente su password"],
+        ["popupGeneradoCamposPlaceHolderAuthentica", "Ingrese codigo Administrador"],
+        ["navegacionLogueadoBoton1", "Proximamente"],
+        ["navegacionLogueadoBoton2", "Proximamente"],
+        ["navegacionLogueadoBoton3", "Buscar Pokemon"],
+        ["navegacionLogueadoBoton4", "Cerrar Sesion"],
+        ["claveRegistrarUsuario", "bmFydXRv"],
+        ["arregloTextosAcordeon", ["ID", "PESO", "HABILIDADES", "TIPO", "ESTADISTICAS", "APARICIONES", "MOVIMIENTOS"]],
+        ["nombrePropositoPagina", "Informacion Pokemons Principal"]
+
+    ]
+    
+}

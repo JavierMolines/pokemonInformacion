@@ -1,0 +1,145 @@
+.contenedor_login {
+
+    z-index: 2;
+    padding: 3%;
+    top: 20%;
+    left: 25%;
+    width: 50%;
+    position: absolute;
+    border-radius: 20px;
+    background-color: white;
+
+}
+
+.contenedor_login button {
+
+    color: wheat;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 22px;
+    padding: 2%;
+    background-color: magenta;
+
+}
+
+.contenedor_login button:hover {
+
+    background-color:  rgb(204, 0, 204);
+
+}
+
+.container_flex {
+
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+
+}
+
+.container_flex i {
+
+    padding: 10px;
+    background: magenta;
+    color: white;
+    width: 5%;
+    font-size: 30px;
+    /* ELEMENTO CENTRADO PERFECTAMENTE EN SU PROPIO ESPACIO */
+    line-height: normal;
+    text-align: center;
+
+}
+  
+.container_flex input {
+
+    width: 95%;
+    padding: 10px;
+    outline: none;
+    font-size: 30px;
+
+}
+
+.properties_buscador {
+
+    margin-top: 4px;
+    box-sizing: border-box;
+    height: 30px;
+    font-size: 25px;
+    float: right;
+    text-align: center;
+    transition: all 0.5s ease;
+
+}
+
+.botones_no_login {
+
+    float: right;
+    text-align: center;
+    width: 10%;
+    padding: 15px;
+    margin: 0.7% 5px;
+    font-size: 19px;
+    color: #cc0066;
+    border: solid 1px #cc0066;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+
+}
+
+.botones_no_login:hover {
+
+    background-color: #cc0066;
+    color: white;
+
+}
+
+.buscador_pokemon_input_logeado {
+
+    width: 10%;
+
+}
+
+.buscador_pokemon_button_logeado {
+
+    width: 4%;
+    border: none;
+    cursor: pointer;
+    background-color: #cc0066;
+    
+}
+
+@media screen and (max-width: 1200px){
+
+    .container_flex input, .container_flex i {
+
+        font-size: 20px;
+    
+    }
+
+    .contenedor_login {
+
+        width: 75%;
+        left: 10%;
+
+    }
+
+    .botones_no_login {
+
+        width: 38%;
+        margin: 10px 6%;
+
+    }
+
+    .buscador_pokemon_input_logeado, .buscador_pokemon_button_logeado {
+
+        width: 49%;
+        margin: 0.5%;
+    
+    }
+
+}

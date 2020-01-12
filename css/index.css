@@ -1,0 +1,78 @@
+body {
+    
+    padding: 0px;
+    margin: 0px;
+
+    
+    background-image: url('https://www.solofondos.com/wp-content/uploads/2016/01/Pokemon-wallpaper-4K.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+
+
+    /*
+    background: #73C8A9;  
+    background: -webkit-linear-gradient(to right, #373B44, #73C8A9);
+    background: linear-gradient(to right, #373B44, #73C8A9);
+    */
+
+}
+
+#contenedor_informacion_pokemon {
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+}
+
+.presentacion {
+    cursor: pointer;
+    margin: 1%;
+    width: 9%;
+    float: left;
+    border-radius: 20px;
+    transition-property: all;
+    transition-duration: 0.8s;
+    transition-timing-function: linear;
+    opacity: 0;
+}
+
+.presentacion_clickeado {
+
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+
+}
+
+.presentacion h4, .presentacion_clickeado h4 {
+    float: left;
+    width: 98%;
+    margin: 1%;
+    padding: 1%;
+    text-align: center;
+}
+
+.presentacion img, .presentacion_clickeado img {
+    float: left;
+    margin: 1%;
+    width: 98%;
+}
+
+@media screen and (max-width: 1200px){
+
+    .presentacion {
+
+        width: 31%;
+
+    }
+
+}

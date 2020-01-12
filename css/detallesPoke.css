@@ -1,0 +1,192 @@
+/* 
+
+    - FONDO DETALLES POKEMON 
+    - NO TOCAR
+
+*/
+
+.cuadro_principal {
+
+    float: left;
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    background-color: rgba(255,255,255, 0.8); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: all 0.5s ease;
+
+}
+
+.modal_cerrada {
+
+    height: 0%;
+    width: 50%;
+    left: 25%;
+    top: 50%;
+
+}
+
+.modal_abierta {
+
+    height: 100%;  
+    width: 100%;  
+    left: 0%;
+    top: 0%;
+
+}
+
+/* 
+
+    - DETALLES POKEMON WITH GRID
+
+*/
+
+#contenedor_secundario {
+
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+
+}
+
+#nombre_pokemon_seleccionado {
+
+    font-size: 60px;
+    text-align: center;
+    grid-column: 2 / 5;
+
+}
+
+#imagen_pokemon_seleccionado {
+
+    text-align: center;
+    grid-column: 2 / 3;
+    width: 100%;
+
+}
+
+#cerrar_detalles_pokemon {
+
+    text-align: center;
+    grid-column: 5 / 6;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+}
+
+#detalles_pokemon_seleccionado {
+
+    grid-column: 3 / 6;
+
+}
+
+#cerrar_detalles_pokemon, #nombre_pokemon_seleccionado {
+
+    color: navy;
+
+}
+
+/* 
+
+    - DETALLES POKEMON CONTENEDOR SECUNDARIO PROPIEDADES
+
+*/
+
+#detalles_pokemon_seleccionado div p {
+
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+}
+
+#detalles_pokemon_seleccionado h2 {
+
+    font-size: 30px;
+    color: white;
+    background-color: rgb(255, 102, 255);
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+#detalles_pokemon_seleccionado div {
+
+    max-height: 0;
+    overflow: hidden;
+    background-color: whitesmoke;
+    color: navy;
+    font-size: 30px;
+    transition: all 0.5s ease;
+
+}
+
+#detalles_pokemon_seleccionado button {
+
+    border: none;
+    cursor: pointer;
+    background-color: rgb(255, 102, 255);
+    color: white;
+    padding: 1%;
+    font-size: 30px;
+    text-align: left;
+    width: 100%;
+    transition: all 0.4s ease;
+
+}
+
+#detalles_pokemon_seleccionado button:hover {
+
+    background-color: navy;
+    color: white;
+
+}
+
+@media screen and (max-width: 1200px){
+
+    #contenedor_secundario {
+
+        grid-template-columns: repeat(6, 16.6%);
+    
+    }
+
+    #nombre_pokemon_seleccionado {
+
+        width: 100%;
+        font-size: 20px;
+        grid-column: 2 / 4;
+          
+    }
+
+    #cerrar_detalles_pokemon {
+
+        grid-column: 4 / 6;  
+        font-size: 20px;
+
+    }
+
+    #imagen_pokemon_seleccionado {
+
+        width: 100%;
+        grid-column: 1 / 3;  
+
+    }
+
+    #detalles_pokemon_seleccionado {
+
+        grid-column: 3 / 6;  
+
+    }
+
+    #detalles_pokemon_seleccionado button, #detalles_pokemon_seleccionado h2, #detalles_pokemon_seleccionado div {
+
+        font-size: 16px;
+
+    }
+
+    #detalles_pokemon_seleccionado div p {
+    
+        font-size: 12px;
+    }
+
+}
