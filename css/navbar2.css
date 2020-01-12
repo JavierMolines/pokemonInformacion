@@ -146,7 +146,7 @@
 
 @media screen and (max-width: 600px){
 
-    .container_flex input, .container_flex i {
+    .container_flex input {
 
         font-size: 12px;
     
