@@ -143,3 +143,13 @@
     }
 
 }
+
+@media screen and (max-width: 600px){
+
+    .container_flex input, .container_flex i {
+
+        font-size: 12px;
+    
+    }
+
+}
