@@ -39,7 +39,7 @@ async function promise_ajax(key_buscar_elemento) {
             reject(new Error("Network Error"));
         };
 
-        peticion.open("GET", "../recursos/textosAPP.json");
+        peticion.open("GET", "../recursos/json/textosAPP.json");
         peticion.send();
 
     });

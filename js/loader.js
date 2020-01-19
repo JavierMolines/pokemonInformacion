@@ -8,7 +8,7 @@ let cargador = document.createElement("img");
 fondo_espaciado.setAttribute("id", "pre_cargador");
 cargador.classList.add("showloading");
 cargador.setAttribute("id", "cargador_improvisado");
-cargador.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Mangekyou_Sharingan_Madara_%28Eternal%29.svg/300px-Mangekyou_Sharingan_Madara_%28Eternal%29.svg.png");
+cargador.setAttribute("src", "../recursos/imagenes/showloading.png");
 cargador.setAttribute("alt", "ImagenLogin");
 fondo_espaciado.appendChild(cargador);
 document.body.insertBefore(fondo_espaciado, document.body.firstChild);
