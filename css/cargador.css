@@ -1,0 +1,44 @@
+#pre_cargador {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 1000;
+}
+
+.showloading {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    -webkit-animation: girar 1.3s linear infinite;
+    -o-animation: girar 1.3s linear infinite;
+    animation: girar 1.3s linear infinite;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+
+.contenedor_fallo_storage {
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 50%;
+    height: 20%;
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+
+}

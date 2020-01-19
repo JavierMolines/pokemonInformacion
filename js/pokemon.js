@@ -1,18 +1,3 @@
-//console.log("EJECUTOR 1");
-
-window.onload = () => {
-
-    if (typeof(Storage) !== "undefined") {
-
-        // NAVEGACION JS LINEA 1 
-        // CHARCODE IMPORTANTE DEL 32 AL 127
-
-        cargar_navegacion();
-        document.body.removeChild(document.getElementById("loader"));
-        
-    } else {console.log("No Soporta STORAGE");}
-}
-
 function verificar_existencia() {
 
     var flujo = "";
