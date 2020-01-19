@@ -96,6 +96,12 @@ async function navegacion_logueado(navegador, usuario) {
 
     for (let contador = 0; contador < 4; contador++) {
 
+        if (contador === 0 || contador === 1) {
+
+            continue;
+            
+        }
+
         let direccion = document.createElement("a");
         //let identificador = `#Pruebas${contador + 1}`;
         //direccion.href = `https://pokeapi.co/api/v2/pokemon/${id_aletaroio()}`;
@@ -107,10 +113,10 @@ async function navegacion_logueado(navegador, usuario) {
 
         switch (contador) {
             case 0:
-                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBoton1");
+                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBotonProximamente");
                 break;
             case 1:
-                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBoton2");
+                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBotonProximamente");
                 break;
             case 2:
                 direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBoton3");
@@ -124,7 +130,7 @@ async function navegacion_logueado(navegador, usuario) {
 
                     } else {
 
-                        document.body.removeChild(validar_existencia);
+                        contenedor_logeado.removeChild(validar_existencia);
 
                     }
 
@@ -353,7 +359,7 @@ function cerrar_sesion(informacion, navegacion) {
         }
 
         if (filtro_pokemon !== null) {
-            document.body.removeChild(filtro_pokemon);
+            contenedor_logeado.removeChild(filtro_pokemon);
         }
         
     } catch (error) {console.log(error);}

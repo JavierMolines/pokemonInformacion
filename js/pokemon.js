@@ -4,8 +4,6 @@ function verificar_existencia() {
     var contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
     var tamama = contenedor_principal.childNodes.length;
 
-    console.log(tamama);
-
     if (tamama == 0) {
         flujo = "nuevo";
     } else {
@@ -21,7 +19,7 @@ function validar_buscar_pokemon(flujo_disparar) {
     try {
 
         let list_box_flujo = document.getElementById("list_box");
-        let campo_ingresar_pokemon = document.getElementById("destroyer");
+        let pokemon_seleccionado_lista = document.getElementById("destroyer");
         let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
         let boton_filtro = document.getElementById("boton_buscar_pokemon");
 
@@ -29,31 +27,41 @@ function validar_buscar_pokemon(flujo_disparar) {
             validar_pokemon_en_pantalla(contenedor_principal);
         }
 
-        if (list_box_flujo.value == "1") {
+        if (list_box_flujo.value == "1") {// TEXTO
 
-            campo_ingresar_pokemon.disabled = true;
+            pokemon_seleccionado_lista.disabled = true;
             list_box_flujo.disabled = true;
             boton_filtro.disabled = true;
             boton_filtro.classList.remove("fondo_boton_aceptado");
-            let numero = campo_ingresar_pokemon.value;
-            if (numero > 151) {
-                document.body.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+            if (pokemon_seleccionado_lista.value == "") {
+                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                return ; 
+            }
+
+            buscar_pokemon(pokemon_seleccionado_lista.value.toLowerCase());
+            pokemon_seleccionado_lista.value = "";
+
+        } else {// NUMEROS
+
+            if (list_box_flujo.value == "2" && contenedor_informacion_pokemon.childNodes.length == 3) {
+
+                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
                 return ;
+                
             }
-            buscar_pokemon(numero);
-            
-        } else if (list_box_flujo.value == "2") {
 
-            campo_ingresar_pokemon.disabled = true;
+            pokemon_seleccionado_lista.disabled = true;
             list_box_flujo.disabled = true;
             boton_filtro.disabled = true;
             boton_filtro.classList.remove("fondo_boton_aceptado");
-            if (campo_ingresar_pokemon.value == "") {
-                document.body.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+            let numero = pokemon_seleccionado_lista.value;
+            if (numero > 151) {
+                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                return;
             }
-            buscar_pokemon(campo_ingresar_pokemon.value);
-            campo_ingresar_pokemon.value = "";
-            
+
+            buscar_pokemon(numero);
+
         }
 
     } catch (error) { console.log(`El error es ${error}`); }
@@ -140,21 +148,22 @@ function filtrar_contenido_necesario(poke_informacion){
 
 function buscar_pokemon(identificador) {
     try {
-
         fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
             .then((pokemon) => {
-                if (pokemon.status == 404) {
-                    document.body.removeChild(document.getElementById("contenedor_filtro_pokemon"));
-                    return ;
+                if (pokemon.status == 200) {
+                    pokemon.json()
+                        .then((informacion) => {
+                            filtrar_contenido_necesario(informacion);
+                        });
+                } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
+                    contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                    return;
                 }
-                pokemon.json()
-                    .then((informacion) => {
-                        filtrar_contenido_necesario(informacion);
-                    })
+
             })
             .catch((fallo) => console.log("El fallo es: " + fallo));
 
-    } catch (error) {console.log(`ERROR DETECTADO ES ${error}`);}
+    } catch (error) { console.log(`ERROR DETECTADO ES ${error}`); }
 }
 
 function id_aletaroio() {

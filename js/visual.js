@@ -196,87 +196,113 @@ function acordeon_especificaciones(pokemon_identificador, contenedor_enviar_elem
 
 }
 
-function crear_filtro_pokemon() {
+async function crear_filtro_pokemon() {
 
+    let nombres_pokemon = await obtener_nombre_application("nombre_pokemons");
     let buscador_pokemon = document.createElement("div");
     let titulo_filtro = document.createElement("h3");
-    let campo_pokemon_id = document.createElement("input");
+    let listbox_pokemon_selector = document.createElement("select");
     let listBoxSelector = document.createElement("select");
-    let opciones_rango = ["Seleccione Modo Busqueda", "Por ID (Busca todos en adelante)", "Por Nombre (Busca solo el pokemon ingresado)"];
     let boton_filtro = document.createElement("button");
+    let opciones_rango = [
+
+        "Seleccione Modo Busqueda", 
+        "Por Nombre (Busca solo el pokemon ingresado)", 
+        "Por ID (Busca 1 pokemon y los proximos 2 delante)", 
+        "Por ID (Busca todos en adelante)"
+
+    ];
 
     buscador_pokemon.setAttribute("id", "contenedor_filtro_pokemon");
     buscador_pokemon.appendChild(titulo_filtro);
     titulo_filtro.style.textAlign = "center";
     titulo_filtro.innerHTML = "Buscador Pokemon";
-    campo_pokemon_id.disabled = true;
-    campo_pokemon_id.setAttribute("id", "destroyer");
-    campo_pokemon_id.setAttribute("type", "text");
-    campo_pokemon_id.setAttribute("autocomplete", "off");
-    campo_pokemon_id.setAttribute("placeholder", "");
-    campo_pokemon_id.setAttribute("title", "IDs permitidos solo del 1 al 151");
-    campo_pokemon_id.addEventListener("change", () => {
 
-        if (listBoxSelector.value == "1") {// NUMEROS
-            
-            let numero_enviar = validar_expresion_regular_solo_numeros(campo_pokemon_id.value);
-            if (numero_enviar == "vacio" || numero_enviar < 0 || numero_enviar > 151) {
-                console.log("NO PUEDES BUSCAR NUMEROS");
-                campo_pokemon_id.value = "";
-                boton_filtro.disabled = true;
-                boton_filtro.classList.remove("fondo_boton_aceptado");
-                return ;
-            }
+    listbox_pokemon_selector.disabled = true;
+    listbox_pokemon_selector.setAttribute("id", "destroyer");
+    listbox_pokemon_selector.classList.add("select_filtro_pokemon");
+    listbox_pokemon_selector.addEventListener("change", () => {
 
-            campo_pokemon_id.value = numero_enviar;
+        if (listbox_pokemon_selector.value == "vacio") {
 
-        } else if(listBoxSelector.value == "2"){// TEXTO
+            boton_filtro.disabled = true;
+            boton_filtro.classList.remove("fondo_boton_aceptado");
 
-            let texto_enviar = validar_expresion_regular_solo_texto(campo_pokemon_id.value);
-            if (texto_enviar == 0) {
-                console.log("NO PUEDES BUSCAR TEXTOS");
-                campo_pokemon_id.value = "";
-                boton_filtro.disabled = true;
-                boton_filtro.classList.remove("fondo_boton_aceptado");
-                return ;
-            }
+        } else {
 
-            campo_pokemon_id.value = texto_enviar;
+            boton_filtro.disabled = false;
+            boton_filtro.classList.add("fondo_boton_aceptado");
+
         }
-
-        boton_filtro.classList.add("fondo_boton_aceptado");
-        boton_filtro.disabled = false;
 
     });
     listBoxSelector.setAttribute("id", `list_box`);
     listBoxSelector.classList.add("select_filtro_pokemon");
     listBoxSelector.addEventListener("change", () => {
 
-        campo_pokemon_id.value = "";
+        listbox_pokemon_selector.value = "";
         if (listBoxSelector.value != "0") {
-            campo_pokemon_id.disabled = false;
+
+            eliminar_opciones_listbox(listbox_pokemon_selector);
+            listbox_pokemon_selector.disabled = false;
+
+            for (let contadorsito = 0; contadorsito < nombres_pokemon.length; contadorsito++) {
+
+                let opciones_pokemon = document.createElement("option");
+
+                if (listBoxSelector.value === "1") {
+
+                    opciones_pokemon.innerHTML = nombres_pokemon[contadorsito];
+                    opciones_pokemon.value = nombres_pokemon[contadorsito];
+
+                    if (contadorsito === 0) {
+                        opciones_pokemon.value = "vacio";
+                    }
+
+                } else {
+
+                    opciones_pokemon.innerHTML = contadorsito;
+                    opciones_pokemon.value = contadorsito;
+
+                    if (contadorsito === 0) {
+                        opciones_pokemon.innerHTML = `Seleccione ID Pokemon`;
+                        opciones_pokemon.value = "vacio";
+                    }
+
+                }
+
+                listbox_pokemon_selector.appendChild(opciones_pokemon);
+
+            }
+
         } else {
-            campo_pokemon_id.disabled = true;
-            boton_filtro.disabled = true;
-            boton_filtro.classList.remove("fondo_boton_aceptado");
+
+            listbox_pokemon_selector.disabled = true;
+
         }
 
+        boton_filtro.disabled = true;
+        boton_filtro.classList.remove("fondo_boton_aceptado");
+
     });
+
     for (let contador = 0; contador < opciones_rango.length; contador++) {
         var opcionesListBox = document.createElement("option");
         opcionesListBox.innerHTML = opciones_rango[contador];
         opcionesListBox.value = contador;
         listBoxSelector.appendChild(opcionesListBox);
     }
+
     boton_filtro.innerHTML = "Buscar";
     boton_filtro.disabled = true;
     boton_filtro.setAttribute("id", "boton_buscar_pokemon");
     boton_filtro.addEventListener("click", verificar_existencia);
 
     buscador_pokemon.appendChild(listBoxSelector);
-    buscador_pokemon.appendChild(campo_pokemon_id);
+    buscador_pokemon.appendChild(listbox_pokemon_selector);
     buscador_pokemon.appendChild(boton_filtro);
-    document.body.appendChild(buscador_pokemon);
+    
+    contenedor_logeado.appendChild(buscador_pokemon);
 
 }
 
@@ -294,4 +320,12 @@ function generar_colores_hexadecimal() {
 
     return numero_hexadecimal;
     
+}
+
+function eliminar_opciones_listbox(listado) {
+
+    while (listado.childNodes.length != 0) {
+        listado.remove(0);
+    }
+
 }
