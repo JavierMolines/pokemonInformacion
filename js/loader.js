@@ -9,7 +9,6 @@ fondo_espaciado.setAttribute("id", "pre_cargador");
 cargador.classList.add("showloading");
 cargador.setAttribute("id", "cargador_improvisado");
 cargador.setAttribute("src", "../recursos/imagenes/showloading.png");
-cargador.setAttribute("alt", "ImagenLogin");
 fondo_espaciado.appendChild(cargador);
 document.body.insertBefore(fondo_espaciado, document.body.firstChild);
 
@@ -27,14 +26,20 @@ window.onload = () => {
         let verificar_url_invocacion = document.baseURI.split(":");
         if (verificar_url_invocacion[0] != "file") {
 
-            let contedor_loading = document.getElementById("pre_cargador");
-            contedor_loading.style.display = "hidden";
-            contedor_loading.style.opacity = 0;
-            cargar_navegacion();
+            setTimeout(() => {
 
-            setTimeout(() =>{
-                document.body.removeChild(contedor_loading);
-            }, 1000);
+                let contedor_loading = document.getElementById("pre_cargador");
+                contedor_loading.style.display = "hidden";
+                contedor_loading.style.opacity = 0;
+                cargar_navegacion();
+
+                setTimeout(()=>{
+
+                    document.body.removeChild(contedor_loading);
+
+                }, 1000);
+
+            }, 3000);
 
         } else {// FALLO INVOCACION ARCHIVO
 

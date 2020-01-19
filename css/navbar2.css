@@ -13,7 +13,7 @@
 
 .contenedor_login button {
 
-    color: wheat;
+    color: white;
     border: none;
     cursor: pointer;
     width: 50%;
@@ -22,7 +22,7 @@
     display: block;
     font-size: 22px;
     padding: 2%;
-    background-color: magenta;
+    background-color: rgb(128, 0, 128);
 
 }
 
@@ -43,7 +43,7 @@
 .container_flex i {
 
     padding: 10px;
-    background: magenta;
+    background: rgb(128, 0, 128);
     color: white;
     width: 5%;
     font-size: 30px;
@@ -82,8 +82,8 @@
     padding: 15px;
     margin: 0.7% 5px;
     font-size: 19px;
-    color: #cc0066;
-    border: solid 1px #cc0066;
+    color: rgb(204, 0, 204);
+    border: solid 1px rgb(204, 0, 204);;
     border-radius: 20px;
     cursor: pointer;
     background-color: white;
@@ -93,7 +93,7 @@
 
 .botones_no_login:hover {
 
-    background-color: #cc0066;
+    background-color: rgb(204, 0, 204);;
     color: white;
 
 }
