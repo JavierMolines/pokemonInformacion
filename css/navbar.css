@@ -19,6 +19,7 @@ nav {
     grid-template-columns: repeat(2, 15%);
     align-items: center;
     background-color: rgb(0, 51, 0);
+    padding: 1%;
 
 }
 
@@ -43,7 +44,7 @@ nav {
 #contenedor_menu_informacion {
 
     display: grid;
-    grid-template-columns: 60% 15%;
+    grid-template-columns: 60% 30%;
     justify-content: space-between;
 
 }
@@ -82,19 +83,19 @@ nav {
     #contenedor_direcciones_total {
 
         justify-content: space-evenly;
-        grid-template-columns: repeat(2, auto);
-
-    }
-
-    #contenedor_menu_informacion {
-
-        grid-template-columns: 60% 25%;
 
     }
 
 }
 
 @media screen and (max-width: 600px){
+
+    #contenedor_direcciones_total {
+
+        justify-content: space-evenly;
+        gap: 15%;
+
+    }
 
     #contenedor_informacion_principal {
 
