@@ -105,7 +105,7 @@ async function navegacion_logueado(navegador, usuario) {
                     if (validar_existencia == null || validar_existencia == undefined) {
                         crear_filtro_pokemon();
                     } else {
-                        validar_existencia.remove();
+                        eliminar_popup_buscador();
                     }
                     //evento.preventDefault();
                     return false;
@@ -329,7 +329,7 @@ function cerrar_sesion(informacion, navegacion) {
         }
 
         if (filtro_pokemon !== null) {
-            filtro_pokemon.remove();
+            eliminar_popup_buscador();
         }
         
     } catch (error) {console.log(error);}

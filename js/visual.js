@@ -1,20 +1,19 @@
 function crear_contenido_visual(arreglo_contenido) {
     try {
+
         var contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
         var contenedor_pokemon = document.createElement("div");
         var titulo_pokemon = document.createElement("h4");
         var imagen_pokemon = document.createElement("img");
-
         let campoNumero = document.getElementById("destroyer");
         let numero = parseInt(campoNumero.value);
 
+        contenedor_pokemon.setAttribute('id', `pokemon${arreglo_contenido[0]}`);
+        agregar_evento_hover(contenedor_pokemon);
+
         titulo_pokemon.innerHTML = arreglo_contenido[1];
         titulo_pokemon.style.color = "white";
-
         imagen_pokemon.src = arreglo_contenido[2][1];
-        contenedor_pokemon.setAttribute('id', `pokemon${arreglo_contenido[0]}`);
-
-        agregar_evento_hover(contenedor_pokemon);
 
         imagen_pokemon.onload = () => {
 
@@ -47,17 +46,12 @@ function agregar_evento_hover(contenedor_del_pokemon) {
     var color_nuevo    = generar_colores_hexadecimal();
 
     contenedor_del_pokemon.style.backgroundColor = color_original;
-
     contenedor_del_pokemon.addEventListener("mouseenter", ()=> {
-
         contenedor_del_pokemon.style.backgroundColor = color_nuevo;
-
     });
 
     contenedor_del_pokemon.addEventListener("mouseleave", ()=> {
-
         contenedor_del_pokemon.style.backgroundColor = color_original;
-
     });
     
 }

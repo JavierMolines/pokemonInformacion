@@ -17,8 +17,6 @@ function verificar_existencia() {
 function validar_buscar_pokemon(flujo_disparar) {
 
     try {
-
-        let contenedor_pokemon_buscador = document.getElementById("contenedor_filtro_pokemon");
         let list_box_flujo = document.getElementById("list_box");
         let pokemon_seleccionado_lista = document.getElementById("destroyer");
         let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
@@ -35,7 +33,7 @@ function validar_buscar_pokemon(flujo_disparar) {
             boton_filtro.disabled = true;
             boton_filtro.classList.remove("fondo_boton_aceptado");
             if (pokemon_seleccionado_lista.value == "") {
-                contenedor_pokemon_buscador.remove();
+                eliminar_popup_buscador();
                 return ; 
             }
 
@@ -46,7 +44,7 @@ function validar_buscar_pokemon(flujo_disparar) {
 
             if (list_box_flujo.value == "2" && contenedor_informacion_pokemon.childNodes.length == 3) {
 
-                contenedor_pokemon_buscador.remove();
+                eliminar_popup_buscador();
                 return ;
                 
             }
@@ -57,7 +55,7 @@ function validar_buscar_pokemon(flujo_disparar) {
             boton_filtro.classList.remove("fondo_boton_aceptado");
             let numero = pokemon_seleccionado_lista.value;
             if (numero > 151) {
-                contenedor_pokemon_buscador.remove();
+                eliminar_popup_buscador();
                 return;
             }
 
@@ -157,7 +155,7 @@ function buscar_pokemon(identificador) {
                             filtrar_contenido_necesario(informacion);
                         });
                 } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
-                    contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                    eliminar_popup_buscador();
                     return;
                 }
 
@@ -215,4 +213,11 @@ function validar_expresion_regular_solo_texto(entrada) {
 
     return finalResultado;
     
+}
+
+function eliminar_popup_buscador() {
+    
+    let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
+    contenedor_buscador.remove();
+
 }
