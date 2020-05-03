@@ -2,17 +2,11 @@ body {
     
     padding: 0px;
     margin: 0px;
-    background-image: url('https://www.solofondos.com/wp-content/uploads/2016/01/Pokemon-wallpaper-4K.jpg');
+    background-image: url('../recursos/imagenes/wallpaper.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-
-    /*
-    background: #73C8A9;  
-    background: -webkit-linear-gradient(to right, #373B44, #73C8A9);
-    background: linear-gradient(to right, #373B44, #73C8A9);
-    */
 
 }
 
@@ -80,6 +74,10 @@ body {
 
         font-size: 12px;
     
+    }
+
+    body {
+        background-image: url('../recursos/imagenes/fondo_movil.jpg');
     }
 
 }
