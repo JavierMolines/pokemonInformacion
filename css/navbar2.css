@@ -3,11 +3,13 @@
     z-index: 2;
     padding: 3%;
     top: 20%;
-    left: 25%;
+    left: 21%;
     width: 50%;
     position: absolute;
     border-radius: 20px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -22,6 +24,7 @@
     display: block;
     font-size: 22px;
     padding: 2%;
+    border-radius: 25px;
     background-color: rgb(128, 0, 128);
 
 }
@@ -34,31 +37,28 @@
 
 .container_flex {
 
-    display: flex;
-    width: 100%;
-    margin-bottom: 15px;
+    display: grid;
+    width: 80%;
+    grid-template-columns: 10% 70%;
+    justify-content: center;
+    align-items: center;
+    margin: 2% auto;
 
 }
 
 .container_flex i {
 
-    padding: 10px;
-    background: rgb(128, 0, 128);
-    color: white;
-    width: 5%;
+    color: rgb(204, 0, 204);
     font-size: 30px;
-    /* ELEMENTO CENTRADO PERFECTAMENTE EN SU PROPIO ESPACIO */
-    line-height: normal;
+    padding: 1%;
     text-align: center;
 
 }
   
 .container_flex input {
 
-    width: 95%;
-    padding: 10px;
-    outline: none;
     font-size: 30px;
+    padding: 2%;
 
 }
 
@@ -90,7 +90,7 @@
     text-align: center;
     font-size: 19px;
     color: rgb(204, 0, 204);
-    border: solid 1px rgb(204, 0, 204);;
+    border: solid 1px rgb(204, 0, 204);
     border-radius: 20px;
     cursor: pointer;
     background-color: white;
@@ -122,12 +122,6 @@
 
 @media screen and (max-width: 1200px){
 
-    .container_flex input, .container_flex i {
-
-        font-size: 20px;
-    
-    }
-
     #contenedor_sin_login {
 
         grid-template-columns: 20% 20%;
@@ -156,6 +150,20 @@
 
         font-size: 11px;
         padding: 7%;
+    
+    }
+
+    .container_flex input {
+
+        font-size: 15px;
+        padding: 2%;
+    
+    }
+
+    .container_flex {
+
+        grid-template-columns: 5% 80%;
+        justify-content: space-between;
     
     }
 

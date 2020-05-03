@@ -77,16 +77,6 @@ nav {
 
 }
 
-.menu_hamburguesa {
-
-    display: none;
-    grid-column: 4 / 5;
-    font-size: 40px;
-    border: none;
-    cursor: pointer;
-
-}
-
 @media screen and (max-width: 1200px){
 
     #contenedor_direcciones_total {

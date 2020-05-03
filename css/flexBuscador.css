@@ -86,6 +86,23 @@
 
 @media screen and (max-width: 600px){
 
-    
+    #contenedor_filtro_pokemon {
+
+        width: 60%;
+        left: 15%;
+
+    }
+
+    #contenedor_filtro_pokemon h3 {
+
+        font-size: 18px;
+
+    }
+
+    #contenedor_filtro_pokemon button {
+
+        font-size: 18px;
+
+    }
 
 }
