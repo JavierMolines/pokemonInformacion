@@ -63,10 +63,17 @@ nav {
 
 #contenedor_informacion_principal {
 
-    color: white;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: repeat(2, 40%);
     justify-content: center;
+
+}
+
+#contenedor_informacion_principal h1, h2 {
+
+    color: white;
+    font-size: 20px;
+    margin: 1%;
 
 }
 
@@ -82,45 +89,34 @@ nav {
 
 @media screen and (max-width: 1200px){
 
-    #contenedor_menu_informacion h1, #contenedor_menu_informacion h2 {
-
-        margin-top: 5px;
-        margin-bottom: 5px;
-
-    }
-
-    #titulo_presentacion_pagina {
-
-        grid-column: 1 / 5;
-
-    }
-
-    #titulo_nombre_login {
-
-        grid-column: 1 / 4;
-
-    }
-
     #contenedor_direcciones_total {
 
-        grid-template-columns: repeat(1, auto);
-        justify-content: unset;
-        display: none;
+        justify-content: space-evenly;
+        grid-template-columns: repeat(2, auto);
 
     }
 
-    .menu_hamburguesa {
+    #contenedor_menu_informacion {
 
-        display: initial;
-    
+        grid-template-columns: 60% 25%;
+
     }
 
-    #contenedor_direcciones_total > a {
+}
 
-        letter-spacing: 1px;
-        padding: 6px;
-    
+@media screen and (max-width: 600px){
+
+    #contenedor_informacion_principal {
+
+        grid-template-rows: auto auto;
+        grid-template-columns: none;
+
     }
-    
+
+    #contenedor_informacion_principal h1, h2 {
+
+        font-size: 12px;
+
+    }
 
 }

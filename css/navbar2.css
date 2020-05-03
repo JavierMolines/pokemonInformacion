@@ -128,17 +128,16 @@
     
     }
 
+    #contenedor_sin_login {
+
+        grid-template-columns: 20% 20%;
+    
+    }
+
     .contenedor_login {
 
         width: 75%;
         left: 10%;
-
-    }
-
-    .botones_no_login {
-
-        width: 38%;
-        margin: 10px 6%;
 
     }
 
@@ -153,9 +152,10 @@
 
 @media screen and (max-width: 600px){
 
-    .container_flex input {
+    #contenedor_sin_login button {
 
-        font-size: 12px;
+        font-size: 11px;
+        padding: 7%;
     
     }
 

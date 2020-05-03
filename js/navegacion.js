@@ -59,8 +59,6 @@ async function navegacion_logueado(navegador, usuario) {
     var contenedor_titulos_iniciales = document.createElement("div");
     var titulo_nombre_persona = document.createElement("h2");
     var titulo_pagina = document.createElement("h1");
-    var menu_hamburguesa = document.createElement("i");
-    var menu_hamburguesa_button = document.createElement("button"); 
     var contenedor_dirrecciones = document.createElement("div");
 
     contenedor_titulos_iniciales.setAttribute("id", "contenedor_informacion_principal");
@@ -72,27 +70,10 @@ async function navegacion_logueado(navegador, usuario) {
     titulo_pagina.setAttribute("id", "titulo_presentacion_pagina");
     document.body.appendChild(elemento_pokemons);
 
-    menu_hamburguesa_button.classList.add("menu_hamburguesa");
-    menu_hamburguesa_button.style.backgroundColor = color_fondo_ambos;
-    menu_hamburguesa_button.style.color = generar_colores_hexadecimal();
-    menu_hamburguesa_button.appendChild(menu_hamburguesa);
-    menu_hamburguesa_button.addEventListener("click", ()=> {
-
-        let pepepe = contenedor_direcciones_total.style.display; 
-        if (pepepe == "grid") {
-            contenedor_direcciones_total.style.display = "none";
-        } else if (typeof(pepepe) == "string"){
-            contenedor_direcciones_total.style.display = "grid";
-        }
-
-    });
-
-    menu_hamburguesa.classList.add("fa");
-    menu_hamburguesa.classList.add("fa-navicon");
     contenedor_titulos_iniciales.appendChild(titulo_pagina);
     contenedor_titulos_iniciales.appendChild(titulo_nombre_persona);
     conte_titulo.appendChild(contenedor_titulos_iniciales);
-    conte_titulo.appendChild(menu_hamburguesa_button);
+   
     conte_titulo.style.backgroundColor = color_fondo_ambos;
     contenedor_logeado.appendChild(conte_titulo);
     titulo_nombre_persona.innerHTML = await obtener_nombre_application("tituloPrincipalConTemplate") + usuario.toLocaleUpperCase();

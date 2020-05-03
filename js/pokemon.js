@@ -18,6 +18,7 @@ function validar_buscar_pokemon(flujo_disparar) {
 
     try {
 
+        let contenedor_pokemon_buscador = document.getElementById("contenedor_filtro_pokemon");
         let list_box_flujo = document.getElementById("list_box");
         let pokemon_seleccionado_lista = document.getElementById("destroyer");
         let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
@@ -34,7 +35,7 @@ function validar_buscar_pokemon(flujo_disparar) {
             boton_filtro.disabled = true;
             boton_filtro.classList.remove("fondo_boton_aceptado");
             if (pokemon_seleccionado_lista.value == "") {
-                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                contenedor_pokemon_buscador.remove();
                 return ; 
             }
 
@@ -45,7 +46,7 @@ function validar_buscar_pokemon(flujo_disparar) {
 
             if (list_box_flujo.value == "2" && contenedor_informacion_pokemon.childNodes.length == 3) {
 
-                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                contenedor_pokemon_buscador.remove();
                 return ;
                 
             }
@@ -56,7 +57,7 @@ function validar_buscar_pokemon(flujo_disparar) {
             boton_filtro.classList.remove("fondo_boton_aceptado");
             let numero = pokemon_seleccionado_lista.value;
             if (numero > 151) {
-                contenedor_logeado.removeChild(document.getElementById("contenedor_filtro_pokemon"));
+                contenedor_pokemon_buscador.remove();
                 return;
             }
 

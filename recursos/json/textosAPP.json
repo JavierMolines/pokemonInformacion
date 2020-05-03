@@ -2,7 +2,7 @@
 
     "textos" : [ 
         
-        ["nombrePropositoPagina", "Informacion Pokemon Principal"],
+        ["nombrePropositoPagina", "Informacion Pokemon"],
         ["tituloPrincipalConTemplate", "Bienvenido "], 
         ["textoSeleccionListBox", "Seleccione rango"],
         ["navegacionBotonNoLogueadoA", "Iniciar"],
