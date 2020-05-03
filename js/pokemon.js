@@ -1,3 +1,32 @@
+function buscar_pokemon(identificador) {
+    try {
+
+        if(identificador === ""){
+
+            eliminar_popup_buscador();
+
+        } else {
+
+            fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
+            .then((pokemon) => {
+                if (pokemon.status == 200) {
+                    pokemon.json()
+                        .then((informacion) => {
+                            filtrar_contenido_necesario(informacion);
+                        });
+                } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
+                    eliminar_popup_buscador();
+                    return;
+                }
+
+            })
+            .catch((fallo) => console.log("El fallo es: " + fallo));
+
+        }
+
+    } catch (error) { console.log(`ERROR DETECTADO ES ${error}`); }
+}
+
 function verificar_existencia() {
 
     var flujo = "";
@@ -145,26 +174,6 @@ function filtrar_contenido_necesario(poke_informacion){
 
 }
 
-function buscar_pokemon(identificador) {
-    try {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
-            .then((pokemon) => {
-                if (pokemon.status == 200) {
-                    pokemon.json()
-                        .then((informacion) => {
-                            filtrar_contenido_necesario(informacion);
-                        });
-                } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
-                    eliminar_popup_buscador();
-                    return;
-                }
-
-            })
-            .catch((fallo) => console.log("El fallo es: " + fallo));
-
-    } catch (error) { console.log(`ERROR DETECTADO ES ${error}`); }
-}
-
 function id_aletaroio() {
 
     var id = parseInt(Math.random() * (151 - 1) + 1);
@@ -218,6 +227,10 @@ function validar_expresion_regular_solo_texto(entrada) {
 function eliminar_popup_buscador() {
     
     let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
-    contenedor_buscador.remove();
+    contenedor_buscador.style.display = "hidden";
+    contenedor_buscador.style.opacity = 0;
+    setTimeout(()=>{
+        contenedor_buscador.remove();
+    }, 1600);
 
 }
