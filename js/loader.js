@@ -42,19 +42,18 @@ window.onload = () => {
             }, 3000);
 
         } else {// FALLO INVOCACION ARCHIVO
-
             crear_mensaje_error_absoluto("LO SENTIMOS. LOS ARCHIVOS NECESITAN SER CARGADOR POR PROTOCOLOS HTTP O HTTPS");
-
         }
-
-
     } else {// FALLO STORAGE
-
         crear_mensaje_error_absoluto("LO SENTIMOS. NO SOPORTA STORAGE, USE OTRO DISPOSITIVO PARA CONECTARSE");
-
     }
 }
 
+/*
+
+    --- ERROR MESSAGE
+
+*/
 function crear_mensaje_error_absoluto(mensaje_pantalla) {
 
     let fondo_loading = document.getElementById("pre_cargador");

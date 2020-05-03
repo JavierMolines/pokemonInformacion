@@ -1,7 +1,8 @@
 {
 
     "textos" : [ 
-
+        
+        ["nombrePropositoPagina", "Informacion Pokemon Principal"],
         ["tituloPrincipalConTemplate", "Bienvenido "], 
         ["textoSeleccionListBox", "Seleccione rango"],
         ["navegacionBotonNoLogueadoA", "Iniciar"],
@@ -19,8 +20,12 @@
         ["navegacionLogueadoBoton4", "Cerrar Sesion"],
         ["claveRegistrarUsuario", "bmFydXRv"],
         ["arregloTextosAcordeon", ["ID", "PESO", "HABILIDADES", "TIPO", "ESTADISTICAS", "APARICIONES", "MOVIMIENTOS"]],
-        ["nombrePropositoPagina", "Informacion Pokemon Principal"]
-
+        ["opcionesBuscadorRango", [
+            "Seleccione Modo Busqueda", 
+            "Por Nombre (Busca solo el pokemon ingresado)", 
+            "Por ID (Busca 1 pokemon y los proximos 2 delante)", 
+            "Por ID (Busca todos en adelante)"
+        ]]
     ],
 
     "pokemons" : [

@@ -74,13 +74,20 @@
 
 }
 
-.botones_no_login {
+#contenedor_sin_login {
 
-    float: right;
+    display: grid;
+    padding: 1%;
+    grid-template-columns: 10% 10%;
+    gap: 2%;
+    justify-content: end;
+
+}
+
+#contenedor_sin_login button {
+
+    padding: 5%;
     text-align: center;
-    width: 10%;
-    padding: 15px;
-    margin: 0.7% 5px;
     font-size: 19px;
     color: rgb(204, 0, 204);
     border: solid 1px rgb(204, 0, 204);;
@@ -91,9 +98,9 @@
 
 }
 
-.botones_no_login:hover {
+#contenedor_sin_login button:hover {
 
-    background-color: rgb(204, 0, 204);;
+    background-color: rgb(204, 0, 204);
     color: white;
 
 }

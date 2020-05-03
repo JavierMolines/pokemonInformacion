@@ -198,20 +198,13 @@ function acordeon_especificaciones(pokemon_identificador, contenedor_enviar_elem
 
 async function crear_filtro_pokemon() {
 
+    let opciones_rango = await obtener_nombre_application("opcionesBuscadorRango");
     let nombres_pokemon = await obtener_nombre_application("nombre_pokemons");
     let buscador_pokemon = document.createElement("div");
     let titulo_filtro = document.createElement("h3");
     let listbox_pokemon_selector = document.createElement("select");
     let listBoxSelector = document.createElement("select");
     let boton_filtro = document.createElement("button");
-    let opciones_rango = [
-
-        "Seleccione Modo Busqueda", 
-        "Por Nombre (Busca solo el pokemon ingresado)", 
-        "Por ID (Busca 1 pokemon y los proximos 2 delante)", 
-        "Por ID (Busca todos en adelante)"
-
-    ];
 
     buscador_pokemon.setAttribute("id", "contenedor_filtro_pokemon");
     buscador_pokemon.appendChild(titulo_filtro);
@@ -302,7 +295,7 @@ async function crear_filtro_pokemon() {
     buscador_pokemon.appendChild(listbox_pokemon_selector);
     buscador_pokemon.appendChild(boton_filtro);
     
-    contenedor_logeado.appendChild(buscador_pokemon);
+    document.body.appendChild(buscador_pokemon);
 
 }
 

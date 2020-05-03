@@ -56,12 +56,14 @@ async function navegacion_logueado(navegador, usuario) {
     var elemento_pokemons = document.createElement("div");
     var contenedor_logeado = document.createElement("div");
     var conte_titulo = document.createElement("div");
+    var contenedor_titulos_iniciales = document.createElement("div");
     var titulo_nombre_persona = document.createElement("h2");
     var titulo_pagina = document.createElement("h1");
     var menu_hamburguesa = document.createElement("i");
     var menu_hamburguesa_button = document.createElement("button"); 
     var contenedor_dirrecciones = document.createElement("div");
 
+    contenedor_titulos_iniciales.setAttribute("id", "contenedor_informacion_principal");
     contenedor_logeado.setAttribute("id", "contenedor_logeado");
     elemento_pokemons.setAttribute("id", "contenedor_informacion_pokemon");
     contenedor_dirrecciones.setAttribute("id", "contenedor_direcciones_total");
@@ -84,10 +86,12 @@ async function navegacion_logueado(navegador, usuario) {
         }
 
     });
+
     menu_hamburguesa.classList.add("fa");
     menu_hamburguesa.classList.add("fa-navicon");
-    conte_titulo.appendChild(titulo_pagina);
-    conte_titulo.appendChild(titulo_nombre_persona);
+    contenedor_titulos_iniciales.appendChild(titulo_pagina);
+    contenedor_titulos_iniciales.appendChild(titulo_nombre_persona);
+    conte_titulo.appendChild(contenedor_titulos_iniciales);
     conte_titulo.appendChild(menu_hamburguesa_button);
     conte_titulo.style.backgroundColor = color_fondo_ambos;
     contenedor_logeado.appendChild(conte_titulo);
@@ -95,17 +99,11 @@ async function navegacion_logueado(navegador, usuario) {
     titulo_pagina.innerHTML = await obtener_nombre_application("nombrePropositoPagina");
 
     for (let contador = 0; contador < 4; contador++) {
-
         if (contador === 0 || contador === 1) {
-
             continue;
-            
         }
 
-        let direccion = document.createElement("a");
-        //let identificador = `#Pruebas${contador + 1}`;
-        //direccion.href = `https://pokeapi.co/api/v2/pokemon/${id_aletaroio()}`;
-        direccion.href = "javascript:void(0);"
+        let direccion = document.createElement("i");
         direccion.addEventListener("click", (evento)=>{
             evento.preventDefault();
             return false;
@@ -119,32 +117,25 @@ async function navegacion_logueado(navegador, usuario) {
                 direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBotonProximamente");
                 break;
             case 2:
-                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBoton3");
+                direccion.classList.add("fa");
+                direccion.classList.add("fa-search");
                 direccion.addEventListener("click", (evento)=>{
-
                     let validar_existencia = document.getElementById("contenedor_filtro_pokemon");
-
                     if (validar_existencia == null || validar_existencia == undefined) {
-
                         crear_filtro_pokemon();
-
                     } else {
-
-                        contenedor_logeado.removeChild(validar_existencia);
-
+                        validar_existencia.remove();
                     }
-
-                    evento.preventDefault();
+                    //evento.preventDefault();
                     return false;
                 }, false);
                 break;
             case 3:
-                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBoton4");
+                direccion.classList.add("fa");
+                direccion.classList.add("fa-power-off");
                 direccion.addEventListener("click", (evento)=>{
-
                     cerrar_sesion(document.getElementById("contenedor_logeado"), navegador);
-
-                    evento.preventDefault();
+                    //evento.preventDefault();
                     return false;
                 }, false);
                 break;
@@ -156,9 +147,7 @@ async function navegacion_logueado(navegador, usuario) {
 
     }
 
-    contenedor_logeado.appendChild(contenedor_dirrecciones);
-
-
+    conte_titulo.appendChild(contenedor_dirrecciones);
 
     try {
 
@@ -355,11 +344,11 @@ function cerrar_sesion(informacion, navegacion) {
         var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
 
         if (contenedor_pokemones !== null) {
-            document.body.removeChild(contenedor_pokemones);
+            contenedor_pokemones.remove();
         }
 
         if (filtro_pokemon !== null) {
-            contenedor_logeado.removeChild(filtro_pokemon);
+            filtro_pokemon.remove();
         }
         
     } catch (error) {console.log(error);}
