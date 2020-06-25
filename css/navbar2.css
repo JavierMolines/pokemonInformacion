@@ -25,13 +25,13 @@
     font-size: 22px;
     padding: 2%;
     border-radius: 25px;
-    background-color: rgb(128, 0, 128);
+    background-color: var(--main_magenta);
 
 }
 
 .contenedor_login button:hover {
 
-    background-color:  rgb(204, 0, 204);
+    background-color:  var(--main_magenta);
 
 }
 
@@ -48,7 +48,7 @@
 
 .container_flex i {
 
-    color: rgb(204, 0, 204);
+    color: var(--main_magenta);
     font-size: 30px;
     padding: 1%;
     text-align: center;
@@ -89,8 +89,8 @@
     padding: 5%;
     text-align: center;
     font-size: 19px;
-    color: rgb(204, 0, 204);
-    border: solid 1px rgb(204, 0, 204);
+    color: var(--main_magenta);
+    border: solid 1px var(--main_magenta);
     border-radius: 20px;
     cursor: pointer;
     background-color: white;
@@ -100,7 +100,7 @@
 
 #contenedor_sin_login button:hover {
 
-    background-color: rgb(204, 0, 204);
+    background-color: var(--main_magenta);
     color: white;
 
 }
@@ -116,7 +116,7 @@
     width: 4%;
     border: none;
     cursor: pointer;
-    background-color: #cc0066;
+    background-color: var(--main_magenta);
     
 }
 

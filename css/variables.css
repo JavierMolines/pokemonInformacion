@@ -1,0 +1,9 @@
+:root {
+
+    --main_magenta: rgb(204, 0, 204);
+    --icono_verde: rgba(16, 211, 16, 0.575);
+    --tiempo_rotacion: 1.3s;
+    --tiempo_rotacion_junior: 2.5s;
+    --fondo_nav: rgb(230, 230, 230);
+
+}

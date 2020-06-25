@@ -18,9 +18,9 @@
     bottom: 0px;
     left: 0px;
     margin: auto;
-    -webkit-animation: girar 1.3s linear infinite;
-    -o-animation: girar 1.3s linear infinite;
-    animation: girar 1.3s linear infinite;
+    -webkit-animation: girar var(--tiempo_rotacion) linear infinite;
+    -o-animation: girar var(--tiempo_rotacion) linear infinite;
+    animation: girar var(--tiempo_rotacion) linear infinite;
 }
 
 @keyframes girar {

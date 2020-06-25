@@ -54,13 +54,14 @@ async function navegacion_no_logueado(navegador) {
 async function navegacion_logueado(navegador, usuario) {
 
     let color_fondo_ambos = generar_colores_hexadecimal();
-    var elemento_pokemons = document.createElement("div");
-    var contenedor_logeado = document.createElement("div");
-    var conte_titulo = document.createElement("div");
-    var contenedor_titulos_iniciales = document.createElement("div");
-    var titulo_nombre_persona = document.createElement("h2");
-    var titulo_pagina = document.createElement("h1");
-    var contenedor_dirrecciones = document.createElement("div");
+    let elemento_pokemons = document.createElement("div");
+    let contenedor_logeado = document.createElement("div");
+    let conte_titulo = document.createElement("div");
+    let contenedor_titulos_iniciales = document.createElement("div");
+    let titulo_nombre_persona = document.createElement("h2");
+    let titulo_pagina = document.createElement("h1");
+    let contenedor_dirrecciones = document.createElement("div");
+    let imagen_presentacion = document.createElement("img");
 
     contenedor_titulos_iniciales.setAttribute("id", "contenedor_informacion_principal");
     contenedor_logeado.setAttribute("id", "contenedor_logeado");
@@ -70,12 +71,14 @@ async function navegacion_logueado(navegador, usuario) {
     titulo_nombre_persona.setAttribute("id", "titulo_nombre_login");
     titulo_pagina.setAttribute("id", "titulo_presentacion_pagina");
     document.body.appendChild(elemento_pokemons);
+    imagen_presentacion.src = "../recursos/imagenes/showloading.png";
 
-    contenedor_titulos_iniciales.appendChild(titulo_pagina);
+    //contenedor_titulos_iniciales.appendChild(titulo_pagina);
+    contenedor_titulos_iniciales.appendChild(imagen_presentacion);
     contenedor_titulos_iniciales.appendChild(titulo_nombre_persona);
     conte_titulo.appendChild(contenedor_titulos_iniciales);
    
-    conte_titulo.style.backgroundColor = color_fondo_ambos;
+    //conte_titulo.style.backgroundColor = color_fondo_ambos;
     contenedor_logeado.appendChild(conte_titulo);
     titulo_nombre_persona.innerHTML = await obtener_nombre_application("tituloPrincipalConTemplate") + usuario.toLocaleUpperCase();
     titulo_pagina.innerHTML = await obtener_nombre_application("nombrePropositoPagina");
