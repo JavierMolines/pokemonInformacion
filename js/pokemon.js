@@ -104,28 +104,42 @@ function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
     } catch (error) { console.log(error); }
 }
 
+/*
+    Respaldada porsia :D
+    PROPIEDAD PARA FOTO DE LA MISMA API: poke_informacion.sprites.front_default
+*/
 function filtrar_contenido_necesario(poke_informacion){
 
+    let nuevo_campo = "";
+
+    if(poke_informacion.id < 10){
+        nuevo_campo = `00${poke_informacion.id}`;
+    } else if(poke_informacion.id <= 99){
+        nuevo_campo = `0${poke_informacion.id}`;
+    } else {
+        nuevo_campo = `${poke_informacion.id}`;
+    }
+
     // VARIABLES NECESARIAS PARA CAPTURAR DURANTE LA EJECUCION
-    var peso_aproximado     = poke_informacion.weight / 10;
-    var total_movimientos   = poke_informacion.moves.length;
-    var total_basica        = poke_informacion.stats.length;
-    var total_tipo_pokemon  = poke_informacion.types.length;
-    var total_habilidades   = poke_informacion.abilities.length;
-    var total_apariciones   = poke_informacion.game_indices.length;
-    var foto_mostrar        = poke_informacion.sprites.front_default;
+    let peso_aproximado     = poke_informacion.weight / 10;
+    let total_movimientos   = poke_informacion.moves.length;
+    let total_basica        = poke_informacion.stats.length;
+    let total_tipo_pokemon  = poke_informacion.types.length;
+    let total_habilidades   = poke_informacion.abilities.length;
+    let total_apariciones   = poke_informacion.game_indices.length;
+    let foto_mostrar        = `https://assets.pokemon.com/assets/cms2/img/pokedex/site_search/${nuevo_campo}.png`;
 
     // ARREGLO PARA CADA TIPO DE ATRIBUTO QUE NECESITO
-    var identityPokemon      = poke_informacion.id;
-    var nombrePokemon        = `${poke_informacion.name.toUpperCase()}`;
-    var arreglo_fotografia   = ["Foto Principal:", foto_mostrar];
-    var arreglo_peso         = [`${peso_aproximado}Kg`];
-    var arreglo_movimientos  = [];
-    var arreglo_estadisticas = [];
-    var arreglo_apariciones  = [];
-    var arreglo_tipo         = [];
-    var arreglo_habilidades  = [];
-    var arreglo_general      = [identityPokemon, nombrePokemon, arreglo_fotografia, arreglo_peso, arreglo_habilidades, arreglo_tipo, arreglo_estadisticas, arreglo_apariciones, arreglo_movimientos];
+    let identityPokemon      = poke_informacion.id;
+    let nombrePokemon        = `${poke_informacion.name.toUpperCase()}`;
+    let arreglo_fotografia   = ["Foto Principal:", foto_mostrar];
+    let arreglo_peso         = [`${peso_aproximado}Kg`];
+    let arreglo_movimientos  = [];
+    let arreglo_estadisticas = [];
+    let arreglo_apariciones  = [];
+    let arreglo_tipo         = [];
+    let arreglo_habilidades  = [];
+    let arreglo_general      = [identityPokemon, nombrePokemon, arreglo_fotografia, arreglo_peso, arreglo_habilidades, arreglo_tipo, arreglo_estadisticas, arreglo_apariciones, arreglo_movimientos];
 
     // CICLOS FOR PARA AGREGAR LA RESPECTIVA INFORMACION EN CADA ARREGLO
 
