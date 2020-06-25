@@ -77,12 +77,11 @@ async function crear_popup(flujo) {
 
 async function registrar_usuario() {
 
-    let campos = seleccionar_campos_credenciales();
     let caracteresMinimos = 5;
     let mensajeUsuario = "";
     let contenedor = document.getElementById("contenedor_registrar_validacion");
     let navegador = document.getElementById("contenedor_buscar_pokemon");
-    let admin_auth = await obtener_nombre_application("claveRegistrarUsuario");
+    let campos = seleccionar_campos_credenciales();
     let usuario = campos[0];
     let passwor = campos[1];
     let _repeat = campos[2];
@@ -91,7 +90,7 @@ async function registrar_usuario() {
     if (usuario.value.length > caracteresMinimos) {
         if (passwor.value.length > caracteresMinimos) {
             if (passwor.value === _repeat.value) {
-                if (_access.value === atob(admin_auth)) {
+                if (_access.value === atob(await obtener_nombre_application("claveRegistrarUsuario"))) {
                     agregar_usuario_registrado(usuario, _repeat);
                     contenedor.remove();
                     navegacion_logueado(navegador, usuario.value);
@@ -143,7 +142,7 @@ async function obtener_usuario_registrado() {
 }
 
 function seleccionar_campos_credenciales() {
-    
+
     let campos_credenciales = document.querySelectorAll(`.campo_editable_cliente`);
     return campos_credenciales;
 
