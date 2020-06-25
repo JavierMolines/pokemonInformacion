@@ -1,100 +1,73 @@
 async function crear_popup(flujo) {
 
-    var pasaonopasa = validar_continuacion_crear_popup(flujo);
+    let objetoCreacionPopup = {
+        tipoCampos: ["text", "password", "password", "password"],
+        iconos: ["fa-user", "fa-lock", "fa-key", "fa-bullseye"],
+        campos: [
+            await obtener_nombre_application("popupGeneradoCamposPlaceHolderUsuario"),
+            await obtener_nombre_application("popupGeneradoCamposPlaceHolderPassword"),
+            await obtener_nombre_application("popupGeneradoCamposPlaceHolderConfirmPassword"),
+            await obtener_nombre_application("popupGeneradoCamposPlaceHolderAuthentica")
+        ]
+    };
 
-    if (pasaonopasa !== true) {
+    if (validar_continuacion_crear_popup(flujo) !== true) {
 
-        var contenedor = document.createElement("div");
-        var usuario = document.createElement("input");
-        var passwor = document.createElement("input");
-        var ingresar = document.createElement("button");
-        var container_usuario = document.createElement("div");
-        var container_password = document.createElement("div");
-        var imagen_usuario = document.createElement("i");
-        var imagen_passwor = document.createElement("i");
+        let contenedor = document.createElement("div");
+        let ingresar = document.createElement("button");
+        let identificador_contenedor = "";
+        let boton_titulo = "";
+        let invocacion = () => console.log("HOLA");
 
-        usuario.setAttribute("type", "text");
-        passwor.setAttribute("type", "password");
+        // CREAR CAMPOS PARA EL LOGIN
+        for (let contador = 0; contador < objetoCreacionPopup.campos.length; contador++) {
 
-        usuario.setAttribute("autocomplete", "off");
-        passwor.setAttribute("autocomplete", "off");
+            let interno = objetoCreacionPopup.campos[contador];
+            let contenedor_interno = document.createElement("div");
+            let campo = document.createElement("input");
+            let icono = document.createElement("i");
 
-        usuario.setAttribute("placeholder", await obtener_nombre_application("popupGeneradoCamposPlaceHolderUsuario"));
-        passwor.setAttribute("placeholder", await obtener_nombre_application("popupGeneradoCamposPlaceHolderPassword"));
+            campo.setAttribute("placeholder", interno);
+            campo.setAttribute("type", objetoCreacionPopup.tipoCampos[contador]);
 
-        imagen_usuario.classList.add("fa");
-        imagen_usuario.classList.add("fa-user");
+            icono.classList.add("fa");
+            icono.classList.add(objetoCreacionPopup.iconos[contador]);
+            campo.classList.add("campo_editable_cliente");
 
-        imagen_passwor.classList.add("fa");
-        imagen_passwor.classList.add("fa-lock");
+            contenedor_interno.classList.add("container_flex");
+            contenedor_interno.appendChild(icono);
+            contenedor_interno.appendChild(campo);
+            contenedor.appendChild(contenedor_interno);
 
-        container_usuario.classList.add("container_flex");
-        container_usuario.appendChild(imagen_usuario);
-        container_usuario.appendChild(usuario);
-
-        container_password.classList.add("container_flex");
-        container_password.appendChild(imagen_passwor);
-        container_password.appendChild(passwor);
-
-        contenedor.classList.add("contenedor_login");
-        contenedor.appendChild(container_usuario);
-        contenedor.appendChild(container_password);
-
-        switch (flujo) {
-            case "iniciar_sesion_flujo":
-                ingresar.innerHTML = await obtener_nombre_application("popupGeneradoIniciar");
-                contenedor.setAttribute("id", "contenedor_login_validacion");
-                usuario.setAttribute("title", "Tipee su nombre de usuario registrado");
-                passwor.setAttribute("title", "Tipee el password registrado");
-                ingresar.onclick = () => {
-                    obtener_usuario_registrado(usuario, passwor);
-                };
+            if (contador == 1 && flujo === "iniciar_sesion_flujo") {
                 break;
+            }
 
-            case "registrarse_flujo":
-                ingresar.innerHTML = await obtener_nombre_application("popupGeneradoRegistrarse");
-                contenedor.setAttribute("id", "contenedor_registrar_validacion");
-                let contenedor_repetir = document.createElement("div");
-                let password_repetir = document.createElement("input");
-                let imagen_repetir = document.createElement("i");
-                let contenedor_auth = document.createElement("div");
-                let autorizacion = document.createElement("input");
-                let imagen_auth = document.createElement("i");
-
-                imagen_repetir.classList.add("fa");
-                imagen_repetir.classList.add("fa-key");
-                imagen_auth.classList.add("fa");
-                imagen_auth.classList.add("fa-bullseye");
-
-                contenedor_repetir.classList.add("container_flex");
-                contenedor_repetir.appendChild(imagen_repetir);
-                contenedor_repetir.appendChild(password_repetir);
-                contenedor_auth.classList.add("container_flex");
-                contenedor_auth.appendChild(imagen_auth);
-                contenedor_auth.appendChild(autorizacion);
-
-                usuario.setAttribute("title", "Tipee su nombre de usuario para registrarlo");
-                passwor.setAttribute("title", "Tipee el password para registrarlo");
-
-                password_repetir.setAttribute("placeholder", await obtener_nombre_application("popupGeneradoCamposPlaceHolderConfirmPassword"));
-                password_repetir.setAttribute("title", "Tipee nuevamente su password para confirmar");
-                password_repetir.setAttribute("type", "password");
-
-                autorizacion.setAttribute("placeholder", await obtener_nombre_application("popupGeneradoCamposPlaceHolderAuthentica"));
-                autorizacion.setAttribute("title", "Tipee codigo de administrador");
-                autorizacion.setAttribute("type", "password");
-
-                contenedor.appendChild(contenedor_repetir);
-                contenedor.appendChild(contenedor_auth);
-
-                ingresar.onclick = () => {
-                    registrar_usuario(usuario, passwor, password_repetir, autorizacion);
-                };
-                break;
-            default:
-                console.log("FLUJO NO VALIDO");
         }
 
+        // EDITAR FLUJO SEGUN CONSULTA
+        if (flujo === "iniciar_sesion_flujo") {
+
+            identificador_contenedor = "contenedor_login_validacion";
+            boton_titulo = await obtener_nombre_application("popupGeneradoIniciar");
+            invocacion = () => {
+                obtener_usuario_registrado();
+            }
+
+        } else if (flujo === "registrarse_flujo") {
+
+            identificador_contenedor = "contenedor_registrar_validacion";
+            boton_titulo = await obtener_nombre_application("popupGeneradoRegistrarse");
+            invocacion = () => {
+                registrar_usuario();
+            }
+        }
+
+        // AGREGAR PROPIEDADES FINALES
+        ingresar.innerHTML = boton_titulo;
+        ingresar.onclick = invocacion;
+        contenedor.setAttribute("id", identificador_contenedor);
+        contenedor.classList.add("contenedor_login");
         contenedor.appendChild(ingresar);
         document.body.appendChild(contenedor);
 
@@ -102,41 +75,24 @@ async function crear_popup(flujo) {
 
 }
 
-function cerrar_sesion(informacion, navegacion) {
+async function registrar_usuario() {
 
-    try {
-
-        var contenedor_pokemones = document.getElementById("contenedor_informacion_pokemon");
-        var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
-
-        if (contenedor_pokemones !== null) {
-            contenedor_pokemones.remove();
-        }
-
-        if (filtro_pokemon !== null) {
-            eliminar_popup_buscador();
-        }
-        
-    } catch (error) {console.log(error);}
-
-    navegacion.removeChild(informacion);
-    navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
-    
-}
-
-async function registrar_usuario(usuario, passwor, password_repetir, autorizacion) {
-
+    let campos = seleccionar_campos_credenciales();
     let caracteresMinimos = 5;
     let mensajeUsuario = "";
     let contenedor = document.getElementById("contenedor_registrar_validacion");
     let navegador = document.getElementById("contenedor_buscar_pokemon");
     let admin_auth = await obtener_nombre_application("claveRegistrarUsuario");
+    let usuario = campos[0];
+    let passwor = campos[1];
+    let _repeat = campos[2];
+    let _access = campos[3];
 
-    if(usuario.value.length > caracteresMinimos){
-        if(passwor.value.length > caracteresMinimos){
-            if(passwor.value === password_repetir.value){
-                if(autorizacion.value === atob(admin_auth)){
-                    agregar_usuario_registrado(usuario, password_repetir);
+    if (usuario.value.length > caracteresMinimos) {
+        if (passwor.value.length > caracteresMinimos) {
+            if (passwor.value === _repeat.value) {
+                if (_access.value === atob(admin_auth)) {
+                    agregar_usuario_registrado(usuario, _repeat);
                     contenedor.remove();
                     navegacion_logueado(navegador, usuario.value);
                     mensajeUsuario = "REGISTRO EXITOSO";
@@ -157,13 +113,17 @@ async function registrar_usuario(usuario, passwor, password_repetir, autorizacio
 }
 
 async function agregar_usuario_registrado(usuario, password_repetir) {
-    
-    let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona"); 
+
+    let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona");
     localStorage.setItem(tituloPersona, [btoa(usuario.value), btoa(password_repetir.value)]);
 
 }
 
-async function obtener_usuario_registrado(usuario, passwor) {
+async function obtener_usuario_registrado() {
+
+    let campos = seleccionar_campos_credenciales();
+    let usuario = campos[0];
+    let passwor = campos[1];
 
     if (localStorage.length > 0) {
 
@@ -179,5 +139,34 @@ async function obtener_usuario_registrado(usuario, passwor) {
 
     usuario.value = "";
     passwor.value = "";
+
+}
+
+function seleccionar_campos_credenciales() {
+    
+    let campos_credenciales = document.querySelectorAll(`.campo_editable_cliente`);
+    return campos_credenciales;
+
+}
+
+function cerrar_sesion(informacion, navegacion) {
+
+    try {
+
+        var contenedor_pokemones = document.getElementById("contenedor_informacion_pokemon");
+        var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
+
+        if (contenedor_pokemones !== null) {
+            contenedor_pokemones.remove();
+        }
+
+        if (filtro_pokemon !== null) {
+            eliminar_popup_buscador();
+        }
+
+    } catch (error) { console.log(error); }
+
+    navegacion.removeChild(informacion);
+    navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
 
 }
