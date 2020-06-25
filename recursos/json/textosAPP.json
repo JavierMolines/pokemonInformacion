@@ -19,6 +19,7 @@
         ["navegacionLogueadoBoton3", "Buscar Pokemon"],
         ["navegacionLogueadoBoton4", "Cerrar Sesion"],
         ["claveRegistrarUsuario", "bmFydXRv"],
+        ["indicadorRegistroPersona", "perfilUsuario"],
         ["arregloTextosAcordeon", ["ID", "PESO", "HABILIDADES", "TIPO", "ESTADISTICAS", "APARICIONES", "MOVIMIENTOS"]],
         ["opcionesBuscadorRango", [
             "Seleccione Modo Busqueda", 

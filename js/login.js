@@ -1,4 +1,4 @@
-async function crear_popup(flujo, navegador) {
+async function crear_popup(flujo) {
 
     var pasaonopasa = validar_continuacion_crear_popup(flujo);
 
@@ -46,35 +46,11 @@ async function crear_popup(flujo, navegador) {
                 contenedor.setAttribute("id", "contenedor_login_validacion");
                 usuario.setAttribute("title", "Tipee su nombre de usuario registrado");
                 passwor.setAttribute("title", "Tipee el password registrado");
-
                 ingresar.onclick = () => {
-
-                    try {
-
-                        let validacion = sessionStorage.getItem("sessionUsuario").split(",");
-
-                        if (atob(validacion[0]) === usuario.value && atob(validacion[1]) === passwor.value) {
-
-                            navegacion_logueado(navegador, atob(validacion[0]));
-                            document.body.removeChild(contenedor);
-
-                        } else {
-
-                            usuario.value = "";
-                            passwor.value = "";
-
-                        }
-
-                    } catch (error) {
-
-                        usuario.value = "";
-                        passwor.value = "";
-                        console.log(`Error capturado ${error}`);
-
-                    }
-
+                    obtener_usuario_registrado(usuario, passwor);
                 };
                 break;
+
             case "registrarse_flujo":
                 ingresar.innerHTML = await obtener_nombre_application("popupGeneradoRegistrarse");
                 contenedor.setAttribute("id", "contenedor_registrar_validacion");
@@ -111,19 +87,8 @@ async function crear_popup(flujo, navegador) {
                 contenedor.appendChild(contenedor_repetir);
                 contenedor.appendChild(contenedor_auth);
 
-                let confirmar_autorizacion = await obtener_nombre_application("claveRegistrarUsuario");
                 ingresar.onclick = () => {
-
-                    if (usuario.value.length > 5 && passwor.value.length > 5
-                        && password_repetir.value.length > 5 && passwor.value === password_repetir.value
-                        && autorizacion.value === atob(confirmar_autorizacion)) {
-
-                        sessionStorage.setItem("sessionUsuario", [btoa(usuario.value), btoa(password_repetir.value)]);
-                        document.body.removeChild(contenedor);
-                        navegacion_logueado(navegador, usuario.value);
-
-                    } else { console.log("CAMPOS NO PERMITIDOS"); }
-
+                    registrar_usuario(usuario, passwor, password_repetir, autorizacion);
                 };
                 break;
             default:
@@ -157,4 +122,62 @@ function cerrar_sesion(informacion, navegacion) {
     navegacion.removeChild(informacion);
     navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
     
+}
+
+async function registrar_usuario(usuario, passwor, password_repetir, autorizacion) {
+
+    let caracteresMinimos = 5;
+    let mensajeUsuario = "";
+    let contenedor = document.getElementById("contenedor_registrar_validacion");
+    let navegador = document.getElementById("contenedor_buscar_pokemon");
+    let admin_auth = await obtener_nombre_application("claveRegistrarUsuario");
+
+    if(usuario.value.length > caracteresMinimos){
+        if(passwor.value.length > caracteresMinimos){
+            if(passwor.value === password_repetir.value){
+                if(autorizacion.value === atob(admin_auth)){
+                    agregar_usuario_registrado(usuario, password_repetir);
+                    contenedor.remove();
+                    navegacion_logueado(navegador, usuario.value);
+                    mensajeUsuario = "REGISTRO EXITOSO";
+                } else {
+                    mensajeUsuario = "CLAVE ADMIN ERRADA";
+                }
+            } else {
+                mensajeUsuario = "LA CLAVE NO COINCIDE";
+            }
+        } else {
+            mensajeUsuario = `El campo clave tiene menos de ${caracteresMinimos}`;
+        }
+    } else {
+        mensajeUsuario = `El campo usuario tiene menos de ${caracteresMinimos}`;
+    }
+
+    console.log(mensajeUsuario);
+}
+
+async function agregar_usuario_registrado(usuario, password_repetir) {
+    
+    let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona"); 
+    localStorage.setItem(tituloPersona, [btoa(usuario.value), btoa(password_repetir.value)]);
+
+}
+
+async function obtener_usuario_registrado(usuario, passwor) {
+
+    if (localStorage.length > 0) {
+
+        let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona");
+        let navegador = document.getElementById("contenedor_buscar_pokemon");
+        let contenedor = document.getElementById("contenedor_login_validacion");
+        let validacion = localStorage.getItem(tituloPersona).split(",");
+        if (atob(validacion[0]) === usuario.value && atob(validacion[1]) === passwor.value) {
+            navegacion_logueado(navegador, atob(validacion[0]));
+            contenedor.remove();
+        }
+    }
+
+    usuario.value = "";
+    passwor.value = "";
+
 }

@@ -37,7 +37,7 @@ async function navegacion_no_logueado(navegador) {
 
         presionar.onclick = () => {
 
-            crear_popup(flujo, navegador);
+            crear_popup(flujo);
 
         };
 
