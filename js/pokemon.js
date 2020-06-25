@@ -1,26 +1,26 @@
 function buscar_pokemon(identificador) {
     try {
 
-        if(identificador === ""){
+        if (identificador === "") {
 
             eliminar_popup_buscador();
 
         } else {
 
             fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
-            .then((pokemon) => {
-                if (pokemon.status == 200) {
-                    pokemon.json()
-                        .then((informacion) => {
-                            filtrar_contenido_necesario(informacion);
-                        });
-                } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
-                    eliminar_popup_buscador();
-                    return;
-                }
+                .then((pokemon) => {
+                    if (pokemon.status == 200) {
+                        pokemon.json()
+                            .then((informacion) => {
+                                filtrar_contenido_necesario(informacion);
+                            });
+                    } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
+                        eliminar_popup_buscador();
+                        return;
+                    }
 
-            })
-            .catch((fallo) => console.log("El fallo es: " + fallo));
+                })
+                .catch((fallo) => console.log("El fallo es: " + fallo));
 
         }
 
@@ -30,13 +30,16 @@ function buscar_pokemon(identificador) {
 function validar_buscar_pokemon(flujo_disparar) {
 
     try {
+
         let list_box_flujo = document.getElementById("list_box");
         let pokemon_seleccionado_lista = document.getElementById("destroyer");
         let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
         let boton_filtro = document.getElementById("boton_buscar_pokemon");
 
         if (flujo_disparar === "usado") {
+
             validar_pokemon_en_pantalla(contenedor_principal);
+
         }
 
         if (list_box_flujo.value == "1") {// TEXTO
@@ -45,39 +48,44 @@ function validar_buscar_pokemon(flujo_disparar) {
             list_box_flujo.disabled = true;
             boton_filtro.disabled = true;
             boton_filtro.classList.remove("fondo_boton_aceptado");
-            if (pokemon_seleccionado_lista.value == "") {
-                eliminar_popup_buscador();
-                return ; 
-            }
 
-            buscar_pokemon(pokemon_seleccionado_lista.value.toLowerCase());
-            pokemon_seleccionado_lista.value = "";
+            if (pokemon_seleccionado_lista.value == "") {
+
+                eliminar_popup_buscador();
+
+            } else {
+
+                buscar_pokemon(pokemon_seleccionado_lista.value.toLowerCase());
+                pokemon_seleccionado_lista.value = "";
+
+            }
 
         } else {// NUMEROS
 
             if (list_box_flujo.value == "2" && contenedor_informacion_pokemon.childNodes.length == 3) {
 
                 eliminar_popup_buscador();
-                return ;
                 
+            } else {
+
+                pokemon_seleccionado_lista.disabled = true;
+                list_box_flujo.disabled = true;
+                boton_filtro.disabled = true;
+                boton_filtro.classList.remove("fondo_boton_aceptado");
+                let numero = pokemon_seleccionado_lista.value;
+
+                if (numero > 151) {
+
+                    eliminar_popup_buscador();
+                    
+                } else {
+
+                    buscar_pokemon(numero);
+
+                }
             }
-
-            pokemon_seleccionado_lista.disabled = true;
-            list_box_flujo.disabled = true;
-            boton_filtro.disabled = true;
-            boton_filtro.classList.remove("fondo_boton_aceptado");
-            let numero = pokemon_seleccionado_lista.value;
-            if (numero > 151) {
-                eliminar_popup_buscador();
-                return;
-            }
-
-            buscar_pokemon(numero);
-
         }
-
     } catch (error) { console.log(`El error es ${error}`); }
-
 }
 
 function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
@@ -98,7 +106,7 @@ function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
                 let performance = document.getElementById(eliminaciones[contadorsito]);
                 contenedor_con_los_pokemons.removeChild(performance);
             }
-            
+
         }
 
     } catch (error) { console.log(error); }
@@ -143,27 +151,28 @@ function filtrar_contenido_necesario(poke_informacion){
 
     // CICLOS FOR PARA AGREGAR LA RESPECTIVA INFORMACION EN CADA ARREGLO
 
-    // MOVIMIENTOS DISPONIBLES
-    for(let contador = 0; contador < total_movimientos; contador++){
+    for (let contador = 0; contador < total_movimientos; contador++) {
+        // MOVIMIENTOS DISPONIBLES
         arreglo_movimientos.push(`${poke_informacion.moves[contador].move.name.toUpperCase()}`);
     }
 
-    for(let contador = 0; contador < total_basica; contador++){
+    for (let contador = 0; contador < total_basica; contador++) {
+        // STATS
         arreglo_estadisticas.push(`${poke_informacion.stats[contador].stat.name.toUpperCase()} : ${poke_informacion.stats[contador].base_stat} basico`);
     }
 
-    // APARICIONES
-    for(let contador = 0; contador < total_apariciones; contador++){
+    for (let contador = 0; contador < total_apariciones; contador++) {
+        // APARICIONES
         arreglo_apariciones.push(`${poke_informacion.game_indices[contador].version.name.toUpperCase()}`);
     }
 
-    // TIPO
-    for(let contador = 0; contador < total_tipo_pokemon; contador++){
+    for (let contador = 0; contador < total_tipo_pokemon; contador++) {
+        // TIPO
         arreglo_tipo.push(`${poke_informacion.types[contador].type.name.toUpperCase()}`);
     }
 
-    // HABILIDADES
-    for(let contador = 0; contador < total_habilidades; contador++){
+    for (let contador = 0; contador < total_habilidades; contador++) {
+        // HABILIDADES
         arreglo_habilidades.push(`${poke_informacion.abilities[contador].ability.name.toUpperCase()}`);
     }
 
