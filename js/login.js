@@ -125,14 +125,9 @@ async function obtener_usuario_registrado() {
     let passwor = campos[1];
 
     if (localStorage.length > 0) {
-
-        let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona");
-        let navegador = document.getElementById("contenedor_buscar_pokemon");
-        let contenedor = document.getElementById("contenedor_login_validacion");
-        let validacion = localStorage.getItem(tituloPersona).split(",");
+        let validacion = await obtener_usuario();
         if (atob(validacion[0]) === usuario.value && atob(validacion[1]) === passwor.value) {
-            navegacion_logueado(navegador, atob(validacion[0]));
-            contenedor.remove();
+            cambiar_vista();
         }
     }
 
@@ -141,31 +136,38 @@ async function obtener_usuario_registrado() {
 
 }
 
+async function obtener_usuario() {
+
+    let tituloPersona = await obtener_nombre_application("indicadorRegistroPersona");
+    let validacion = localStorage.getItem(tituloPersona).split(",");
+    return validacion;
+
+}
+
+function auto_login() {
+
+    if(localStorage.length > 0){
+        cambiar_vista();
+    }
+
+}
+
+async function cambiar_vista() {
+
+    let contenedor_login = document.getElementById("contenedor_login_validacion");
+    if(contenedor_login !== null){
+        contenedor_login.remove();
+    }
+
+    let navegador = document.getElementById("contenedor_buscar_pokemon");
+    let validacion = await obtener_usuario();
+    navegacion_logueado(navegador, atob(validacion[0]));
+
+}
+
 function seleccionar_campos_credenciales() {
 
     let campos_credenciales = document.querySelectorAll(`.campo_editable_cliente`);
     return campos_credenciales;
-
-}
-
-function cerrar_sesion(informacion, navegacion) {
-
-    try {
-
-        var contenedor_pokemones = document.getElementById("contenedor_informacion_pokemon");
-        var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
-
-        if (contenedor_pokemones !== null) {
-            contenedor_pokemones.remove();
-        }
-
-        if (filtro_pokemon !== null) {
-            eliminar_popup_buscador();
-        }
-
-    } catch (error) { console.log(error); }
-
-    navegacion.removeChild(informacion);
-    navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
 
 }

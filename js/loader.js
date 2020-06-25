@@ -26,12 +26,11 @@ window.onload = () => {
         let verificar_url_invocacion = document.baseURI.split(":");
         if (verificar_url_invocacion[0] != "file") {
 
+            cargar_navegacion();
             setTimeout(() => {
 
                 let contedor_loading = document.getElementById("pre_cargador");
-                contedor_loading.style.display = "hidden";
                 contedor_loading.style.opacity = 0;
-                cargar_navegacion();
 
                 setTimeout(()=>{
 

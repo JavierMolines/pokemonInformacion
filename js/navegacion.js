@@ -6,6 +6,7 @@ function cargar_navegacion() {
         navegacion.setAttribute("id", "contenedor_buscar_pokemon");
         navegacion_no_logueado(navegacion);
         document.body.insertBefore(navegacion, document.body.firstChild);
+        auto_login();
 
     } catch (error) { console.log(`El error es: ${error}`); }
 
@@ -174,4 +175,26 @@ function validar_continuacion_crear_popup(flujo) {
         
     } catch (error) {}
     
+}
+
+function cerrar_sesion(informacion, navegacion) {
+
+    try {
+
+        var contenedor_pokemones = document.getElementById("contenedor_informacion_pokemon");
+        var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
+
+        if (contenedor_pokemones !== null) {
+            contenedor_pokemones.remove();
+        }
+
+        if (filtro_pokemon !== null) {
+            eliminar_popup_buscador();
+        }
+
+    } catch (error) { console.log(error); }
+
+    navegacion.removeChild(informacion);
+    navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
+
 }
