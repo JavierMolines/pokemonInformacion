@@ -12,54 +12,12 @@ nav {
 
 }
 
-#contenedor_direcciones_total {
-
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 15%);
-    align-items: center;
-    /*background-color: rgb(0, 51, 0);*/
-    padding: 1%;
-
-}
-
-#contenedor_direcciones_total > i {
-
-    cursor: pointer;
-    border-radius: 25px;
-    padding: 2%;
-    letter-spacing: 0.5px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-size: 30px;
-    transition: all 0.5s ease-out;
-
-}
-
-#contenedor_direcciones_total > i:hover {
-    color: var(--icono_verde);
-}
-
 #contenedor_menu_informacion {
 
     display: grid;
     grid-template-columns: 60% 30%;
     justify-content: space-between;
     background-color: var(--fondo_nav);
-
-}
-
-#titulo_presentacion_pagina {
- 
-    text-align: center;
-
-}
-
-#titulo_nombre_login {
-
-    letter-spacing: 2px;
-    text-align: center;
 
 }
 
@@ -90,6 +48,48 @@ nav {
 
 }
 
+#contenedor_direcciones_total {
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 15%);
+    align-items: center;
+    /*background-color: rgb(0, 51, 0);*/
+    padding: 1%;
+
+}
+
+#contenedor_direcciones_total > i {
+
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 2%;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    transition: all 0.5s ease-out;
+
+}
+
+#contenedor_direcciones_total > i:hover {
+    color: var(--icono_verde);
+}
+
+#titulo_presentacion_pagina {
+ 
+    text-align: center;
+
+}
+
+#titulo_nombre_login {
+
+    letter-spacing: 2px;
+    text-align: center;
+
+}
+
 @media screen and (max-width: 1200px){
 
     #contenedor_direcciones_total {
@@ -111,14 +111,22 @@ nav {
 
     #contenedor_informacion_principal {
 
-        grid-template-rows: auto auto;
-        grid-template-columns: none;
+        grid-template-columns: 40%;
+        justify-content: center;
 
     }
 
     #contenedor_informacion_principal h1, h2 {
 
         font-size: 12px;
+
+    }
+
+    #contenedor_informacion_principal > img{
+
+        width: 40%;
+        margin-left: 0%;
+        display: none;
 
     }
 
