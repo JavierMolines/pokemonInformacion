@@ -40,22 +40,6 @@ function crear_contenido_visual(arreglo_contenido) {
     } catch (error) { console.log(error) }
 }
 
-function agregar_evento_hover(contenedor_del_pokemon) {
-
-    var color_original = "#4d4d4d";
-    var color_nuevo    = generar_colores_hexadecimal();
-
-    contenedor_del_pokemon.style.backgroundColor = color_original;
-    contenedor_del_pokemon.addEventListener("mouseenter", ()=> {
-        contenedor_del_pokemon.style.backgroundColor = color_nuevo;
-    });
-
-    contenedor_del_pokemon.addEventListener("mouseleave", ()=> {
-        contenedor_del_pokemon.style.backgroundColor = color_original;
-    });
-    
-}
-
 async function detalles_pokemon(pokemon_identificador) {
 
     var contenedor_principal = document.createElement("div");
@@ -293,26 +277,34 @@ async function crear_filtro_pokemon() {
 
 }
 
-function generar_colores_hexadecimal() {
+function verificar_existencia() {
 
-    var numero_hexadecimal  = "#";
-    var array_minimo_maximo = [16, 1];
+    var flujo = "";
+    var contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
+    var tamama = contenedor_principal.childNodes.length;
 
-    for (let contador = 0; contador < 6; contador++) {
-
-        var numero = parseInt(Math.random() * (array_minimo_maximo[0] - array_minimo_maximo[1]) + array_minimo_maximo[1]);
-        numero_hexadecimal += numero.toString(16);
-
+    if (tamama == 0) {
+        flujo = "nuevo";
+    } else {
+        flujo = "usado";
     }
 
-    return numero_hexadecimal;
-    
+    validar_buscar_pokemon(flujo);
+
 }
 
-function eliminar_opciones_listbox(listado) {
+function agregar_evento_hover(contenedor_del_pokemon) {
 
-    while (listado.childNodes.length != 0) {
-        listado.remove(0);
-    }
+    var color_original = "#4d4d4d";
+    var color_nuevo    = generar_colores_hexadecimal();
 
+    contenedor_del_pokemon.style.backgroundColor = color_original;
+    contenedor_del_pokemon.addEventListener("mouseenter", ()=> {
+        contenedor_del_pokemon.style.backgroundColor = color_nuevo;
+    });
+
+    contenedor_del_pokemon.addEventListener("mouseleave", ()=> {
+        contenedor_del_pokemon.style.backgroundColor = color_original;
+    });
+    
 }

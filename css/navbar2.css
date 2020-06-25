@@ -3,8 +3,8 @@
     z-index: 2;
     padding: 3%;
     top: 20%;
-    left: 21%;
-    width: 50%;
+    left: 30%;
+    width: 35%;
     position: absolute;
     border-radius: 20px;
     background-color: white;
@@ -38,8 +38,8 @@
 .container_flex {
 
     display: grid;
-    width: 80%;
-    grid-template-columns: 10% 70%;
+    width: 100%;
+    grid-template-columns: 10% 85%;
     justify-content: center;
     align-items: center;
     margin: 2% auto;

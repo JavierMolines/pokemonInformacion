@@ -27,22 +27,6 @@ function buscar_pokemon(identificador) {
     } catch (error) { console.log(`ERROR DETECTADO ES ${error}`); }
 }
 
-function verificar_existencia() {
-
-    var flujo = "";
-    var contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
-    var tamama = contenedor_principal.childNodes.length;
-
-    if (tamama == 0) {
-        flujo = "nuevo";
-    } else {
-        flujo = "usado";
-    }
-
-    validar_buscar_pokemon(flujo);
-
-}
-
 function validar_buscar_pokemon(flujo_disparar) {
 
     try {
@@ -171,66 +155,5 @@ function filtrar_contenido_necesario(poke_informacion){
 
     // ENVIAR CONTENIDO PARA SETEARLO EN PANTALLA
     crear_contenido_visual(arreglo_general);
-
-}
-
-function id_aletaroio() {
-
-    var id = parseInt(Math.random() * (151 - 1) + 1);
-
-    if (id > 151) {
-        return parseInt(Math.random() * (151 - 1) + 1);
-    }
-
-    return id;
-
-}
-
-function validar_expresion_regular_solo_numeros(entrada) {
-
-    if (entrada.length == 0) {
-        return "vacio";
-    }
-
-    let resultado = entrada.match(/[0-9]/g);
-
-    if (resultado === null) {
-        return "vacio";
-    }
-
-    let nuevoString = resultado.join();
-    let finalResultado = nuevoString.replace(/,/g, "");
-
-    return finalResultado;
-
-}
-
-function validar_expresion_regular_solo_texto(entrada) {
-
-    if (entrada.length == 0) {
-        return 0;
-    }
-
-    let resultado = entrada.match(/[a-z]/g);
-
-    if (resultado == null) {
-        return 0;
-    }
-
-    let nuevoString = resultado.join();
-    let finalResultado = nuevoString.replace(/,/g, "");
-
-    return finalResultado;
-    
-}
-
-function eliminar_popup_buscador() {
-    
-    let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
-    contenedor_buscador.style.display = "hidden";
-    contenedor_buscador.style.opacity = 0;
-    setTimeout(()=>{
-        contenedor_buscador.remove();
-    }, 1600);
 
 }
