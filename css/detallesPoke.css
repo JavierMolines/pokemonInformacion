@@ -34,6 +34,37 @@
 
 }
 
+/*
+
+    - DETALLES DESPLEGABLES
+
+*/
+
+.contenedor_elemento_detalles_pokemon {
+
+    margin-bottom: 10%;
+
+}
+
+.contenedor_elemento_detalles_pokemon > div { 
+
+    display: flex;
+    width: 100%;
+
+}
+
+.contenedor_elemento_detalles_pokemon > div > button {
+
+    border-radius: 25px;
+    font-size: 25px;
+    border: none;
+    padding: 3% 5%;
+    color: white;
+    background-color: rgb(46, 43, 43);
+    margin: 1%;
+
+}
+
 /* 
 
     - DETALLES POKEMON WITH GRID
@@ -91,37 +122,24 @@
 
 @media screen and (max-width: 1200px){
 
-    #contenedor_secundario {
-
-        grid-template-columns: repeat(6, 16.6%);
-    
-    }
-
     #nombre_pokemon_seleccionado {
 
         width: 100%;
         font-size: 20px;
-        grid-column: 2 / 4;
+        grid-column: 3 / 5;
           
     }
 
     #cerrar_detalles_pokemon {
 
-        grid-column: 4 / 6;  
+        grid-column: 6 / 7;  
         font-size: 20px;
-
-    }
-
-    #imagen_pokemon_seleccionado {
-
-        width: 100%;
-        grid-column: 1 / 3;  
 
     }
 
     #detalles_pokemon_seleccionado {
 
-        grid-column: 3 / 6;  
+        grid-column: 2 / 6;  
 
     }
 

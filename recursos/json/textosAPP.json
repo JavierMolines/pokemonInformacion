@@ -26,6 +26,25 @@
             "Por Nombre (Busca solo el pokemon ingresado)", 
             "Por ID (Busca 1 pokemon y los proximos 2 delante)", 
             "Por ID (Busca todos en adelante)"
+        ]],
+        ["opcionesTipoPokemon", [
+            ["ice"      , "rgb(0, 255, 255)"],
+            ["normal"   , "rgb(204, 204, 204)"],
+            ["grass"    , "green"],
+            ["fire"     , "rgb(255, 71, 26)"],
+            ["water"    , "rgb(0, 92, 230)"],
+            ["ghost"    , "rgb(77, 0, 77)"],
+            ["bug"      , "rgb(136, 136, 68)"],
+            ["dark"     , "rgb(26, 26, 26)"],
+            ["fighting" , "rgb(255, 102, 26)"],
+            ["ground"   , "rgb(153, 77, 0)"],
+            ["steel"    , "rgb(64, 64, 64)"],
+            ["rock"     , "rgb(115, 77, 38)"],
+            ["poison"   , "purple"],
+            ["flying"   , "rgb(0, 128, 128)"],
+            ["dragon"   , "rgb(0, 0, 255)"],
+            ["psychic"  , "rgb(255, 0, 255)"],
+            ["electric" , "rgb(204, 204, 0)"]
         ]]
     ],
 

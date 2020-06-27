@@ -38,7 +38,7 @@ function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_
         circle_dos.setAttribute("r", relleno);
         circle_dos.setAttribute('stroke', color_fondo);
         circle_dos.setAttribute('stroke-dasharray', limite_angulo);
-        circle_dos.setAttribute('stroke-dashoffset', arigmetico);
+        circle_dos.setAttribute('stroke-dashoffset', arigmetico + 65);
 
         circle_lbl.setAttribute("x", "50%");
         circle_lbl.setAttribute("y", 185);
