@@ -1,17 +1,10 @@
 function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_elementos){
 
-    console.log(pokemon_identificador);
-
-    let pruebas = pokemon_identificador[6];
-    let titulo = document.createElement("h1");
+    let tit_skill = pokemon_identificador[6];
+    let titulo    = document.createElement("h1");
     let principal = document.createElement("div");
 
-    principal.classList.add("contenedor_svg");
-    titulo.innerHTML = "Estadisticas Primarias";
-    titulo.style.textAlign = "center";
-    contenedor_enviar_elementos.appendChild(titulo);
-
-    for (let contador = 0; contador < pruebas.length; contador++) {
+    for (let contador = 0; contador < tit_skill.length; contador++) {
 
         let relleno            = 50;
         let pos_x              = 100;
@@ -21,7 +14,7 @@ function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_
         let color_porcentaje   = "navy";
         let color_fondo        = "gray";
         let url_svg            = "http://www.w3.org/2000/svg";
-        let item_arreglo       = pruebas[contador].split(":");
+        let item_arreglo       = tit_skill[contador].split(":");
         let numero_calcular    = item_arreglo[1];
         let svg_principal      = document.createElementNS(url_svg, "svg");
         let svg_propiedad      = svg_principal.namespaceURI;
@@ -75,6 +68,12 @@ function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_
                 
     }
 
+    titulo.innerHTML = "Estadisticas Primarias";
+    titulo.style.textAlign = "center";
+
+    principal.classList.add("contenedor_svg");
+
+    contenedor_enviar_elementos.appendChild(titulo);
     contenedor_enviar_elementos.appendChild(principal);
 
 }
