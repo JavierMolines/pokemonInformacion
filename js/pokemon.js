@@ -158,7 +158,7 @@ function filtrar_contenido_necesario(poke_informacion){
 
     for (let contador = 0; contador < total_basica; contador++) {
         // STATS
-        arreglo_estadisticas.push(`${poke_informacion.stats[contador].stat.name.toUpperCase()} : ${poke_informacion.stats[contador].base_stat} basico`);
+        arreglo_estadisticas.push(`${poke_informacion.stats[contador].stat.name.toUpperCase()}:${poke_informacion.stats[contador].base_stat}`);
     }
 
     for (let contador = 0; contador < total_apariciones; contador++) {

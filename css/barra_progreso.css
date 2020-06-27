@@ -1,0 +1,25 @@
+svg circle {
+
+    fill: none;
+    stroke-width: 12;
+
+}
+
+svg text {
+
+    fill: black;
+
+}
+
+.contenedor_svg {
+
+    float: left;
+    width: 100%;
+    
+}
+
+.contenedor_svg > svg {
+
+    width: 33%;
+
+}

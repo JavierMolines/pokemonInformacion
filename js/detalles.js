@@ -1,10 +1,11 @@
 function crear_contenido_visual(arreglo_contenido) {
     try {
 
-        var contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
-        var contenedor_pokemon = document.createElement("div");
-        var titulo_pokemon = document.createElement("h4");
-        var imagen_pokemon = document.createElement("img");
+        let timing_await = 10;
+        let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
+        let contenedor_pokemon = document.createElement("div");
+        let titulo_pokemon = document.createElement("h4");
+        let imagen_pokemon = document.createElement("img");
         let campoNumero = document.getElementById("destroyer");
         let numero = parseInt(campoNumero.value);
 
@@ -33,7 +34,7 @@ function crear_contenido_visual(arreglo_contenido) {
                 campoNumero.value = numero + 1;
                 validar_buscar_pokemon("nuevo");
 
-            }, 500);
+            }, timing_await);
 
         };
 
