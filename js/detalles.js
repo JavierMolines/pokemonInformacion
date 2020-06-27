@@ -73,9 +73,8 @@ function detalles_pokemon(pokemon_identificador) {
     contenedor_principal.classList.add("modal_cerrada");
 
     contenedor_detalles.setAttribute("id", "detalles_pokemon_seleccionado");
-    //let arregloNombresBotonesAcordeon = await obtener_nombre_application("arregloTextosAcordeon");
-    //acordeon_especificaciones(pokemon_identificador, contenedor_detalles, arregloNombresBotonesAcordeon);
     barras_circulares_habilidades(pokemon_identificador, contenedor_detalles);
+    generar_listas_detalles(pokemon_identificador, contenedor_detalles);
 
     titulo.innerHTML = pokemon_identificador[1];
     titulo.setAttribute("id", "nombre_pokemon_seleccionado");

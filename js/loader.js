@@ -23,6 +23,7 @@ window.onload = () => {
     // CHARCODE IMPORTANTE DEL 32 AL 127
     if (typeof (Storage) !== "undefined") {
 
+        let tiempo_delay = 2000;
         let verificar_url_invocacion = document.baseURI.split(":");
         if (verificar_url_invocacion[0] != "file") {
 
@@ -38,7 +39,7 @@ window.onload = () => {
 
                 }, 1000);
 
-            }, 3000);
+            }, tiempo_delay);
 
         } else {// FALLO INVOCACION ARCHIVO
             crear_mensaje_error_absoluto("LO SENTIMOS. LOS ARCHIVOS NECESITAN SER CARGADOR POR PROTOCOLOS HTTP O HTTPS");
