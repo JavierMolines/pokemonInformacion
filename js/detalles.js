@@ -1,7 +1,7 @@
 function crear_contenido_visual(arreglo_contenido) {
     try {
 
-        let timing_await = 10;
+        let timing_await = 500;
         let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
         let contenedor_pokemon = document.createElement("div");
         let titulo_pokemon = document.createElement("h4");
@@ -57,7 +57,7 @@ function agregar_evento_hover(contenedor_del_pokemon) {
     
 }
 
-async function detalles_pokemon(pokemon_identificador) {
+function detalles_pokemon(pokemon_identificador) {
 
     var contenedor_principal = document.createElement("div");
     var contenedor_secundario = document.createElement("div");
@@ -73,9 +73,9 @@ async function detalles_pokemon(pokemon_identificador) {
     contenedor_principal.classList.add("modal_cerrada");
 
     contenedor_detalles.setAttribute("id", "detalles_pokemon_seleccionado");
-    let arregloNombresBotonesAcordeon = await obtener_nombre_application("arregloTextosAcordeon");
+    //let arregloNombresBotonesAcordeon = await obtener_nombre_application("arregloTextosAcordeon");
     //acordeon_especificaciones(pokemon_identificador, contenedor_detalles, arregloNombresBotonesAcordeon);
-    barras_circulares_habilidades(pokemon_identificador, contenedor_detalles, arregloNombresBotonesAcordeon);
+    barras_circulares_habilidades(pokemon_identificador, contenedor_detalles);
 
     titulo.innerHTML = pokemon_identificador[1];
     titulo.setAttribute("id", "nombre_pokemon_seleccionado");
