@@ -10,7 +10,7 @@
     float: left;
     position: fixed; /* Stay in place */
     z-index: 3; /* Sit on top */
-    background-color: rgba(255,255,255, 0.9); /* Black w/opacity */
+    background-color: rgba(255,255,255, 0.98); /* Black w/opacity */
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: all 0.5s ease;
 
@@ -152,6 +152,16 @@
     #detalles_pokemon_seleccionado div p {
     
         font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+
+    .contenedor_elemento_detalles_pokemon > div { 
+
+        flex-direction: column;
+
     }
 
 }
