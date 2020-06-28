@@ -29,7 +29,7 @@
         ]],
         ["opcionesTipoPokemon", [
             ["ice"      , "rgb(0, 255, 255)"],
-            ["normal"   , "rgb(204, 204, 204)"],
+            ["normal"   , "rgb(77, 77, 77)"],
             ["grass"    , "green"],
             ["fire"     , "rgb(255, 71, 26)"],
             ["water"    , "rgb(0, 92, 230)"],
