@@ -55,8 +55,8 @@ function crear_txt_buscador(buscador_pokemon) {
 function crear_boton_buscador(buscador_pokemon) {
 
     let boton_filtro       = document.createElement("button");
-    boton_filtro.innerHTML = "Buscar";
-    //boton_filtro.disabled  = true;
+    boton_filtro.innerHTML = "Buscar  ";
+    boton_filtro.disabled  = true;
     boton_filtro.setAttribute("id", "boton_buscar_pokemon");
     boton_filtro.addEventListener("click", verificar_existencia);
     buscador_pokemon.appendChild(boton_filtro);
@@ -84,14 +84,20 @@ function validar_numero_ingresado() {
 
 async function buscar_coincidencias() {
 
-    let campo_mostrar    = document.getElementById("mostrar_coincidencias");
     let listado_pokemon  = await obtener_nombre_application("nombre_pokemons");
+    let boton_filtro     = document.getElementById("boton_buscar_pokemon");
+    let campo_mostrar    = document.getElementById("mostrar_coincidencias");
     let campo            = document.getElementById("nombre_pokemon_campo");
     let nombre_ingresado = campo.value.trim();
+
     campo.value = nombre_ingresado.slice(0, 1).toUpperCase() + nombre_ingresado.slice(1)
     campo_mostrar.innerHTML = "";
 
     if (nombre_ingresado !== "") {
+
+        boton_filtro.disabled = false;
+        boton_filtro.classList.add("fondo_boton_aceptado");
+
         for (let contador = 0; contador < listado_pokemon.length; contador++) {
 
             let filtro = new RegExp(`^${nombre_ingresado}`, "ig");
@@ -109,15 +115,38 @@ async function buscar_coincidencias() {
 
             }
         }
+
+    } else {
+
+        boton_filtro.disabled = true;
+        if(/fondo_boton_aceptado/g.test(boton_filtro.className) === true){
+            boton_filtro.classList.remove("fondo_boton_aceptado");
+        }
+
     }
     
 }
 
 function verificar_existencia() {
 
-    let flujo = "";
+    let flujo                = "";
+    let digito_ingresado     = document.getElementById("numero_buscar_campo");
+    let nombre_ingresado     = document.getElementById("nombre_pokemon_campo");
     let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
-    let limite = contenedor_principal.childNodes.length;
+    let boton_filtro         = document.getElementById("boton_buscar_pokemon");
+    let icono_buscador       = document.createElement("i");
+    let limite               = contenedor_principal.childNodes.length;
+
+    icono_buscador.classList.add("fa");
+    icono_buscador.classList.add("fa-refresh");
+    icono_buscador.classList.add("fa-spin");
+    boton_filtro.classList.remove("fondo_boton_aceptado");
+
+    boton_filtro.disabled = true;
+    nombre_ingresado.disabled = true;
+    digito_ingresado.disabled = true;
+
+    boton_filtro.appendChild(icono_buscador);
 
     if (limite == 0) {
         flujo = "nuevo";
