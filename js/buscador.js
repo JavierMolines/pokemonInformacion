@@ -24,6 +24,8 @@ function crear_txt_buscador(buscador_pokemon) {
 
     let contenedor_busqueda = document.createElement("div");
     let flex_buscador = document.createElement("div");
+
+    contenedor_busqueda.setAttribute("id", "contenedor_campos_input");
     flex_buscador.setAttribute("id", "mostrar_coincidencias");
     
     let campo_buscar = document.createElement("input");
@@ -31,6 +33,7 @@ function crear_txt_buscador(buscador_pokemon) {
     campo_buscar.setAttribute("type", "text");
     campo_buscar.setAttribute("autocomplete", "off");
     campo_buscar.setAttribute("maxlength", 15);
+    campo_buscar.setAttribute("placeholder", "Nombre del pokemon");
     campo_buscar.addEventListener("keypress", buscar_coincidencias);
     campo_buscar.addEventListener("keyup", buscar_coincidencias);
 
@@ -44,6 +47,7 @@ function crear_txt_buscador(buscador_pokemon) {
     limite_numero.setAttribute("max", 151);
     limite_numero.addEventListener("keypress", validar_numero_ingresado);
     limite_numero.addEventListener("keyup", validar_numero_ingresado);
+    limite_numero.setAttribute("placeholder", "Limite");
 
     contenedor_busqueda.appendChild(campo_buscar);
     contenedor_busqueda.appendChild(limite_numero);
