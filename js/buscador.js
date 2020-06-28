@@ -15,7 +15,7 @@ function crear_titulo_buscador(buscador_pokemon) {
 
     let titulo_filtro             = document.createElement("h3");
     titulo_filtro.style.textAlign = "center";
-    titulo_filtro.innerHTML       = "Buscador Pokemon";
+    titulo_filtro.innerHTML       = "Buscador de Pokemon";
     buscador_pokemon.appendChild(titulo_filtro);
 
 }
@@ -94,7 +94,7 @@ async function buscar_coincidencias() {
     let campo            = document.getElementById("nombre_pokemon_campo");
     let nombre_ingresado = campo.value.trim();
 
-    campo.value = nombre_ingresado.slice(0, 1).toUpperCase() + nombre_ingresado.slice(1)
+    campo.value = nombre_ingresado.slice(0, 1).toUpperCase() + nombre_ingresado.slice(1);
     campo_mostrar.innerHTML = "";
 
     if (nombre_ingresado !== "") {
@@ -140,6 +140,8 @@ function verificar_existencia() {
     let boton_filtro         = document.getElementById("boton_buscar_pokemon");
     let icono_buscador       = document.createElement("i");
     let limite               = contenedor_principal.childNodes.length;
+
+    boton_filtro.innerHTML = "Buscando.. ";
 
     icono_buscador.classList.add("fa");
     icono_buscador.classList.add("fa-refresh");
