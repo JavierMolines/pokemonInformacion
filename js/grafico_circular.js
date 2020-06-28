@@ -6,7 +6,7 @@ function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_
 
     for (let contador = 0; contador < tit_skill.length; contador++) {
 
-        let relleno            = 50;
+        let relleno            = 70;
         let pos_x              = 100;
         let pos_y              = 100;
         let limite_angulo      = 440;
@@ -38,10 +38,10 @@ function barras_circulares_habilidades(pokemon_identificador, contenedor_enviar_
         circle_dos.setAttribute("r", relleno);
         circle_dos.setAttribute('stroke', color_fondo);
         circle_dos.setAttribute('stroke-dasharray', limite_angulo);
-        circle_dos.setAttribute('stroke-dashoffset', arigmetico + 65);
+        circle_dos.setAttribute('stroke-dashoffset', arigmetico );
 
         circle_lbl.setAttribute("x", "50%");
-        circle_lbl.setAttribute("y", 185);
+        circle_lbl.setAttribute("y", 190);
         circle_lbl.setAttribute("text-anchor", "middle");
 
         circle_porce.setAttribute("x", "61%");
