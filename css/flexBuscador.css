@@ -116,10 +116,21 @@
         
     }
 
-    #contenedor_filtro_pokemon div input {
+    #contenedor_campos_input input {
 
+        padding: 10px 10px;
+        margin: 0% 2%;
+        width: 45%;
+        color: black;
         font-size: 1em;
       
+    }
+
+    #contenedor_filtro_pokemon button {
+
+        width: 75%;
+        font-size: 1em;
+    
     }
 
 }
