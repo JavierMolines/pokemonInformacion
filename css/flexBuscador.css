@@ -2,14 +2,13 @@
 #contenedor_filtro_pokemon {
 
     position: fixed;
-    top: 30%;
+    top: 20%;
     left: 28%;
     padding: 3%;
     width: 35%;
     background-color: wheat;
     display: grid;
     border-radius: 25px;
-    gap: 5%;
     grid-template-rows: repeat(4, 20%);
     justify-items: center;
     -webkit-transition: all 1.5s ease-out;
@@ -18,37 +17,67 @@
 
 }
 
-#contenedor_filtro_pokemon h3 {
+#contenedor_filtro_pokemon div {
 
-    color: rgb(0, 51, 0);
-    margin: 2% auto;
-    font-size: 35px;
-
-}
-
-#contenedor_filtro_pokemon select {
-
-    font-size: 20px;
-    width: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
 }
 
-#contenedor_filtro_pokemon select option {
+#contenedor_filtro_pokemon div input {
 
-    font-size: 20px;
+    margin: 0% 2%;
+    width: 40%;
+    color: black;
+    font-size: 1.5em;
+    border: 2px solid black;
+    border-radius: 10px;
+
+}
+
+#contenedor_filtro_pokemon div input:focus {
+
+    color: gray;
+    border: 2px solid rgba(128, 128, 128, 0.925);
+    border-radius: 10px;
 
 }
 
 #contenedor_filtro_pokemon button {
 
-    font-size: 25px;
     border: none;
-    padding: 2.5%;
+    padding: 2% 8%;
     border-radius: 20px;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 5%;
 
 }
+
+#mostrar_coincidencias {
+
+    flex-direction: column;
+
+}
+
+#mostrar_coincidencias > p {
+
+    margin: 0.25% 0%;
+    cursor: pointer;
+
+}
+
+#mostrar_coincidencias > p:hover {
+
+    color: navy;
+    font-size: 1.7em;
+
+}
+
+/*
+
+    --- RESPONSIVE DESIGN
+
+*/
 
 .fondo_boton_aceptado {
 
@@ -64,49 +93,21 @@
 
 }
 
-@media screen and (max-width: 1100px){
-
-    #contenedor_filtro_pokemon h3 {
-
-        font-size: 22px;
-
-    }
-
-    #contenedor_filtro_pokemon select, #contenedor_filtro_pokemon select option {
-
-        font-size: 12px;
-
-    }
-
-    #contenedor_filtro_pokemon button {
-
-        font-size: 20px;
-        padding: 5%;
-        margin-bottom: 10%;
-
-    }
-
-}
-
 @media screen and (max-width: 600px){
 
     #contenedor_filtro_pokemon {
 
-        width: 60%;
-        left: 15%;
-
+        top: 12.5%;
+        left: 10%;
+        padding: 2%;
+        width: 75%;
+        
     }
 
-    #contenedor_filtro_pokemon h3 {
+    #contenedor_filtro_pokemon div input {
 
-        font-size: 18px;
-
-    }
-
-    #contenedor_filtro_pokemon button {
-
-        font-size: 18px;
-
+        font-size: 1em;
+      
     }
 
 }

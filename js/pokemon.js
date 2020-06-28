@@ -1,5 +1,37 @@
+var buscador_global_id = 0;
+var contador_global    = 0;
+var global_limite      = 0;
+
+function manejador_global() {
+
+    if(global_limite === contador_global){
+
+        buscador_global_id = 0;
+        global_limite      = 0;
+        contador_global    = 0;
+        
+    }
+
+    if(global_limite > 0){
+
+        contador_global++;
+        buscador_global_id++;
+        validar_buscar_pokemon("nuevo");
+        
+    } else {
+
+        eliminar_popup_buscador();
+
+    }
+    
+}
+
 function buscar_pokemon(identificador) {
     try {
+
+        if(typeof(identificador) === "string"){
+            identificador = identificador.toLowerCase();
+        }
 
         if (identificador === "") {
 
@@ -9,6 +41,7 @@ function buscar_pokemon(identificador) {
 
             fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
                 .then((pokemon) => {
+
                     if (pokemon.status == 200) {
                         pokemon.json()
                             .then((informacion) => {
@@ -29,63 +62,29 @@ function buscar_pokemon(identificador) {
 
 function validar_buscar_pokemon(flujo_disparar) {
 
-    try {
+    let conte_principal = document.getElementById("contenedor_informacion_pokemon");
+    let limite_buscar   = document.getElementById("numero_buscar_campo");
+    let pokemon_buscar  = document.getElementById("nombre_pokemon_campo");
+    let cadena_enviar   = ""; 
 
-        let list_box_flujo = document.getElementById("list_box");
-        let pokemon_seleccionado_lista = document.getElementById("destroyer");
-        let contenedor_principal = document.getElementById("contenedor_informacion_pokemon");
-        let boton_filtro = document.getElementById("boton_buscar_pokemon");
+    if (flujo_disparar === "usado") {
+        validar_pokemon_en_pantalla(conte_principal);
+    }
 
-        if (flujo_disparar === "usado") {
+    if(buscador_global_id === 0){
+        cadena_enviar = pokemon_buscar.value;
+    } else {
+        cadena_enviar = buscador_global_id;
+    }
 
-            validar_pokemon_en_pantalla(contenedor_principal);
+    if(/\d/i.test(limite_buscar.value) === true){
 
-        }
+        global_limite = parseInt(limite_buscar.value);
 
-        if (list_box_flujo.value == "1") {// TEXTO
+    }
 
-            pokemon_seleccionado_lista.disabled = true;
-            list_box_flujo.disabled = true;
-            boton_filtro.disabled = true;
-            boton_filtro.classList.remove("fondo_boton_aceptado");
+    buscar_pokemon(cadena_enviar);
 
-            if (pokemon_seleccionado_lista.value == "") {
-
-                eliminar_popup_buscador();
-
-            } else {
-
-                buscar_pokemon(pokemon_seleccionado_lista.value.toLowerCase());
-                pokemon_seleccionado_lista.value = "";
-
-            }
-
-        } else {// NUMEROS
-
-            if (list_box_flujo.value == "2" && contenedor_informacion_pokemon.childNodes.length == 3) {
-
-                eliminar_popup_buscador();
-                
-            } else {
-
-                pokemon_seleccionado_lista.disabled = true;
-                list_box_flujo.disabled = true;
-                boton_filtro.disabled = true;
-                boton_filtro.classList.remove("fondo_boton_aceptado");
-                let numero = pokemon_seleccionado_lista.value;
-
-                if (numero > 151) {
-
-                    eliminar_popup_buscador();
-                    
-                } else {
-
-                    buscar_pokemon(numero);
-
-                }
-            }
-        }
-    } catch (error) { console.log(`El error es ${error}`); }
 }
 
 function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
@@ -139,6 +138,7 @@ function filtrar_contenido_necesario(poke_informacion){
 
     // ARREGLO PARA CADA TIPO DE ATRIBUTO QUE NECESITO
     let identityPokemon      = poke_informacion.id;
+    buscador_global_id       = poke_informacion.id;
     let nombrePokemon        = `${poke_informacion.name.toUpperCase()}`;
     let arreglo_fotografia   = ["Foto Principal:", foto_mostrar];
     let arreglo_peso         = [`${peso_aproximado}Kg`];

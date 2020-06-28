@@ -6,8 +6,6 @@ function crear_contenido_visual(arreglo_contenido) {
         let contenedor_pokemon = document.createElement("div");
         let titulo_pokemon = document.createElement("h4");
         let imagen_pokemon = document.createElement("img");
-        let campoNumero = document.getElementById("destroyer");
-        let numero = parseInt(campoNumero.value);
 
         contenedor_pokemon.setAttribute('id', `pokemon${arreglo_contenido[0]}`);
         agregar_evento_hover(contenedor_pokemon);
@@ -31,8 +29,7 @@ function crear_contenido_visual(arreglo_contenido) {
             setTimeout(() => {
 
                 contenedor_pokemon.style.opacity = 1;
-                campoNumero.value = numero + 1;
-                validar_buscar_pokemon("nuevo");
+                manejador_global();
 
             }, timing_await);
 
