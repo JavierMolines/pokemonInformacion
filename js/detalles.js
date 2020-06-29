@@ -26,10 +26,11 @@ function crear_contenido_visual(arreglo_contenido) {
             contenedor_pokemon.appendChild(titulo_pokemon);
             contenedor_principal.appendChild(contenedor_pokemon);
 
-            setTimeout(() => {
+            let cargar = setTimeout(() => {
 
                 contenedor_pokemon.style.opacity = 1;
                 manejador_global();
+                clearTimeout(cargar);
 
             }, timing_await);
 
@@ -88,8 +89,9 @@ function detalles_pokemon(pokemon_identificador) {
         contenedor_principal.classList.replace("modal_abierta", "modal_cerrada");
 
         // ELIMINAR ELEMENTO
-        setTimeout(() => { 
+        let transition_segunda = setTimeout(() => { 
            document.body.removeChild(contenedor_principal);
+           clearTimeout(transition_segunda);
         }, 500);
 
     };
@@ -106,8 +108,9 @@ function detalles_pokemon(pokemon_identificador) {
     document.body.appendChild(contenedor_principal);
 
     // TRANSITION PARTE 1 ABRIR
-    setTimeout(() => { 
+    let transition_primera = setTimeout(() => { 
         contenedor_principal.classList.replace("modal_cerrada", "modal_abierta");   
+        clearTimeout(transition_primera);
     }, 100);
 
 }

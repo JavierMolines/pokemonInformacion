@@ -250,16 +250,18 @@ function mensaje_validacion_crear_usuario() {
 
 function borrar_toast(identificador) {
 
-    setTimeout(()=>{
+    let tiempo_remover = setTimeout(()=>{
 
         identificador.style.opacity = 0;
 
-        setTimeout(()=>{
+        let quitar_toast = setTimeout(()=>{
 
             identificador.remove();
-    
+            clearTimeout(quitar_toast);
+            
         }, 500);
 
+        clearTimeout(tiempo_remover);
     }, 2000);
     
 }

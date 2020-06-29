@@ -3,8 +3,9 @@ function eliminar_popup_buscador() {
     let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
     contenedor_buscador.style.display = "hidden";
     contenedor_buscador.style.opacity = 0;
-    setTimeout(()=>{
+    let quitar_buscador = setTimeout(()=>{
         contenedor_buscador.remove();
+        clearTimeout(quitar_buscador);
     }, 1600);
 
 }
