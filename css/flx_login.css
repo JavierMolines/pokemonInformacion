@@ -139,6 +139,7 @@
 
 .contenedor_toast_error {
 
+    transition: all 0.5s linear;
     color: white;
     border-radius: 5px;
     margin: 0.5% 2.3%;

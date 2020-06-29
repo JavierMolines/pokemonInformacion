@@ -252,7 +252,13 @@ function borrar_toast(identificador) {
 
     setTimeout(()=>{
 
-        identificador.remove();
+        identificador.style.opacity = 0;
+
+        setTimeout(()=>{
+
+            identificador.remove();
+    
+        }, 500);
 
     }, 2000);
     
