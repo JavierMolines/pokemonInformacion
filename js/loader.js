@@ -28,14 +28,16 @@ window.onload = () => {
         if (verificar_url_invocacion[0] != "file") {
 
             cargar_navegacion();
-            setTimeout(() => {
+            let cargador_principal = setTimeout(() => {
 
                 let contedor_loading = document.getElementById("pre_cargador");
                 contedor_loading.style.opacity = 0;
+                clearTimeout(cargador_principal);
 
-                setTimeout(()=>{
+                let quitar_loader = setTimeout(()=>{
 
                     document.body.removeChild(contedor_loading);
+                    clearTimeout(quitar_loader);
 
                 }, 1000);
 

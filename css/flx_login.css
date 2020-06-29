@@ -155,8 +155,8 @@
 
     background-color: white;
     display: flex;
-    width: 4vw;
-    height: 3vw;
+    width: 3vw;
+    height: 2vw;
     margin: 0% 5%;
     border-radius: 5px;
     align-items: center;
@@ -172,7 +172,7 @@
 
 .contenedor_toast_error i {
 
-    font-size: 30px;
+    font-size: 18px;
     color: rgb(255, 77, 77);
 
 }
@@ -184,12 +184,6 @@
 }
 
 @media screen and (max-width: 1200px){
-
-    #contenedor_sin_login {
-
-        grid-template-columns: 20% 20%;
-    
-    }
 
     .contenedor_login {
 
@@ -209,6 +203,43 @@
 
 @media screen and (max-width: 600px){
 
+    .contenedor_toast_error div:nth-child(1) {
+
+        width: 9vw;
+        height: 8vw;
+    
+    }
+
+    .contenedor_toast_error p {
+
+        font-size: 0.6em;
+    
+    }
+
+    #contenedor_icono_login {
+
+        height: 92%;
+
+    }
+
+    .container_flex i {
+
+        font-size: 15px;
+
+    }
+
+    .contenedor_login h1 {
+    
+        font-size: 25px;
+    
+    }
+
+    .contenedor_toast_error i {
+
+        font-size: 9px;
+    
+    }
+
     #contenedor_sin_login button {
 
         font-size: 11px;
@@ -216,17 +247,16 @@
     
     }
 
+    #contenedor_sin_login {
+
+        grid-template-columns: 25% 25%;
+    
+    }
+
     .container_flex input {
 
         font-size: 15px;
         padding: 2%;
-    
-    }
-
-    .container_flex {
-
-        grid-template-columns: 5% 80%;
-        justify-content: space-between;
     
     }
 

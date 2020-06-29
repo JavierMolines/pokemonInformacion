@@ -79,7 +79,7 @@ function detalles_pokemon(pokemon_identificador) {
     imagen.setAttribute("id", "imagen_pokemon_seleccionado");
 
     cerrar_etique.classList.add("fa");
-    cerrar_etique.classList.add("fa-power-off");
+    cerrar_etique.classList.add("fa-times");
     cerrar_button.appendChild(cerrar_etique);
     cerrar_button.setAttribute("id", "cerrar_detalles_pokemon");
     cerrar_button.onclick = () => {
