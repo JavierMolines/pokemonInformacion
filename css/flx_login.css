@@ -13,6 +13,12 @@
 
 }
 
+.contenedor_login h1 {
+    
+    text-align: center;
+
+}
+
 .contenedor_login button {
 
     color: white;
@@ -118,6 +124,63 @@
     cursor: pointer;
     background-color: var(--main_magenta);
     
+}
+
+#contenedor_icono_login {
+
+    height: 97%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(89, 89, 89);
+
+}
+
+.contenedor_toast_error {
+
+    color: white;
+    border-radius: 5px;
+    margin: 0.5% 2.3%;
+    padding: 3%;
+    width: 89%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    background-color: rgb(255, 77, 77);
+
+}
+
+.contenedor_toast_error div:nth-child(1) {
+
+    background-color: white;
+    display: flex;
+    width: 4vw;
+    height: 3vw;
+    margin: 0% 5%;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contenedor_toast_error div:nth-child(2) {
+
+    width: 90%;
+
+}
+
+.contenedor_toast_error i {
+
+    font-size: 30px;
+    color: rgb(255, 77, 77);
+
+}
+
+.contenedor_toast_error p {
+
+    font-size: 1em;
+
 }
 
 @media screen and (max-width: 1200px){
