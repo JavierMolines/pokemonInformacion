@@ -141,7 +141,10 @@ function verificar_existencia() {
     let icono_buscador       = document.createElement("i");
     let limite               = contenedor_principal.childNodes.length;
 
-    boton_filtro.innerHTML = "Buscando.. ";
+    //REINICIAR BUSCADOR
+    buscador_global_id = 0;
+    global_limite      = 0;
+    contador_global    = 0;
 
     icono_buscador.classList.add("fa");
     icono_buscador.classList.add("fa-refresh");
@@ -153,6 +156,7 @@ function verificar_existencia() {
     digito_ingresado.disabled = true;
 
     boton_filtro.appendChild(icono_buscador);
+    boton_filtro.innerHTML = "Buscando.. ";
 
     if (limite == 0) {
         flujo = "nuevo";

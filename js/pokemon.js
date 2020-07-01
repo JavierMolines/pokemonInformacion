@@ -12,7 +12,7 @@ function manejador_global() {
         
     }
 
-    if(global_limite > 0){
+    if(global_limite > 0 && buscador_global_id !== 151){
 
         contador_global++;
         buscador_global_id++;
@@ -30,7 +30,9 @@ function buscar_pokemon(identificador) {
     try {
 
         if(typeof(identificador) === "string"){
+			
             identificador = identificador.toLowerCase();
+			
         }
 
         if (identificador === "") {
