@@ -1,15 +1,19 @@
 var buscador_global_id = 0;
 var contador_global    = 0;
 var global_limite      = 0;
+var global_nombre      = "";
+
+function limpiar_globales() {
+    buscador_global_id = 0;
+    contador_global    = 0;
+    global_limite      = 0;
+    global_nombre      = "";
+}
 
 function manejador_global() {
 
     if(global_limite === contador_global){
-
-        buscador_global_id = 0;
-        global_limite      = 0;
-        contador_global    = 0;
-        
+        limpiar_globales();
     }
 
     if(global_limite > 0 && buscador_global_id !== 151){
@@ -19,99 +23,89 @@ function manejador_global() {
         validar_buscar_pokemon("nuevo");
         
     } else {
-
-        eliminar_popup_buscador();
-
+        buscador_pokemon_asincrono.remove();
     }
-    
 }
 
 function buscar_pokemon(identificador) {
     try {
+        console.log(identificador);
+        fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
+            .then((pokemon) => {
 
-        if(typeof(identificador) === "string"){
-			
-            identificador = identificador.toLowerCase();
-			
-        }
+                if (pokemon.status == 200) {
+                    pokemon.json()
+                        .then((informacion) => {
+                            filtrar_contenido_necesario(informacion);
+                        });
+                } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
+                    buscador_pokemon_asincrono.remove();
+                }
 
-        if (identificador === "") {
+            })
+            .catch((fallo) => buscador_pokemon_asincrono.remove());
+    } catch (error) {
+        buscador_pokemon_asincrono.remove();
+    }
+}
 
-            eliminar_popup_buscador();
+function verificar_existencia() {
 
-        } else {
+    let contenedor_icono     = document.createElement("div");
+    let icono_buscador       = document.createElement("i");
+    let nombre_buscar        = document.getElementById("nombre_pokemon_campo");
+    let cantidad_buscar      = document.getElementById("numero_buscar_campo");
+    let contenido_pokemon    = document.getElementById("contenedor_informacion_pokemon");
+    let flujo                = contenido_pokemon.childNodes.length > 0 ? "usado" : "nuevo";
 
-            fetch(`https://pokeapi.co/api/v2/pokemon/${identificador}`)
-                .then((pokemon) => {
+    // DAR ESTILOS
+    contenedor_icono.style.width = "100%";
+    contenedor_icono.style.height = "100%";
+    contenedor_icono.style.display = "flex";
+    contenedor_icono.style.flexDirection = "column";
+    contenedor_icono.style.alignItems = "center";
+    contenedor_icono.style.justifyContent = "center";
+    contenedor_icono.style.position = "fixed";
 
-                    if (pokemon.status == 200) {
-                        pokemon.json()
-                            .then((informacion) => {
-                                filtrar_contenido_necesario(informacion);
-                            });
-                    } else {// EXPLOTO ESTA MIERDA AJAAJAJJAA
-                        eliminar_popup_buscador();
-                        return;
-                    }
+    // AGREGAR BETA EN PANTALLA
+    icono_buscador.classList.add("fa");
+    icono_buscador.classList.add("fa-cog");
+    icono_buscador.setAttribute("id", "cargando_busqueda_de_pokemon");
+    contenedor_icono.setAttribute("id", "buscador_pokemon_asincrono");
+    contenedor_icono.appendChild(icono_buscador);
+    document.body.appendChild(contenedor_icono);
 
-                })
-                .catch((fallo) => console.log("El fallo es: " + fallo));
+    //REINICIAR BUSCADOR
+    limpiar_globales();
+    global_nombre = nombre_buscar.value.toLowerCase();
 
-        }
+    if(cantidad_buscar.value !== ""){
+        global_limite = parseInt(cantidad_buscar.value);
+    }
 
-    } catch (error) { console.log(`ERROR DETECTADO ES ${error}`); }
+    eliminar_popup_buscador();
+    validar_buscar_pokemon(flujo);
+
 }
 
 function validar_buscar_pokemon(flujo_disparar) {
 
-    let conte_principal = document.getElementById("contenedor_informacion_pokemon");
-    let limite_buscar   = document.getElementById("numero_buscar_campo");
-    let pokemon_buscar  = document.getElementById("nombre_pokemon_campo");
-    let cadena_enviar   = ""; 
-
-    if (flujo_disparar === "usado") {
-        validar_pokemon_en_pantalla(conte_principal);
-    }
+    let cadena_enviar = ""; 
 
     if(buscador_global_id === 0){
-        cadena_enviar = pokemon_buscar.value;
+        cadena_enviar = global_nombre;
     } else {
         cadena_enviar = buscador_global_id;
     }
 
-    if(/\d/i.test(limite_buscar.value) === true){
-
-        global_limite = parseInt(limite_buscar.value);
-
+    if(flujo_disparar === "usado"){
+        validar_pokemon_en_pantalla(document.getElementById("contenedor_informacion_pokemon")); 
     }
 
     buscar_pokemon(cadena_enviar);
 
 }
 
-function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
-
-    try {
-
-        var eliminaciones = [];
-
-        for (let contadorsito = 0; contadorsito < contenedor_con_los_pokemons.childNodes.length; contadorsito++) {
-            if (contenedor_con_los_pokemons.childNodes[contadorsito].id !== undefined) {
-                eliminaciones.push(contenedor_con_los_pokemons.childNodes[contadorsito].id);
-            }
-        }
-
-        if (eliminaciones.length > 0) {
-
-            for (let contadorsito = 0; contadorsito < eliminaciones.length; contadorsito++) {
-                let performance = document.getElementById(eliminaciones[contadorsito]);
-                contenedor_con_los_pokemons.removeChild(performance);
-            }
-
-        }
-
-    } catch (error) { console.log(error); }
-}
 
 /*
     Respaldada porsia :D

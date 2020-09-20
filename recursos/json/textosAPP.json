@@ -7,7 +7,7 @@
         ["textoSeleccionListBox", "Seleccione rango"],
         ["navegacionBotonNoLogueadoA", "Iniciar"],
         ["navegacionBotonNoLogueadoB", "Registrarse"],
-        ["popupGeneradoIniciar", "Conectarse"],
+        ["popupGeneradoIniciar", "Ingresar"],
         ["popupGeneradoRegistrarse", "Registrarse"],
         ["popupGeneradoCamposPlaceHolderUsuario", "Ingrese usuario"],
         ["popupGeneradoCamposPlaceHolderPassword", "Ingrese password"],

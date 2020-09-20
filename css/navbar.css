@@ -52,7 +52,7 @@ nav {
 
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(2, 15%);
+    grid-template-columns: repeat(3, 15%);
     align-items: center;
     /*background-color: rgb(0, 51, 0);*/
     padding: 1%;

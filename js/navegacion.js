@@ -84,7 +84,7 @@ async function navegacion_logueado(navegador, usuario) {
     titulo_pagina.innerHTML = await obtener_nombre_application("nombrePropositoPagina");
 
     for (let contador = 0; contador < 4; contador++) {
-        if (contador === 0 || contador === 1) {
+        if (contador === 0) {
             continue;
         }
 
@@ -99,7 +99,15 @@ async function navegacion_logueado(navegador, usuario) {
                 direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBotonProximamente");
                 break;
             case 1:
-                direccion.innerHTML = await obtener_nombre_application("navegacionLogueadoBotonProximamente");
+                direccion.classList.add("fa");
+                direccion.classList.add("fa-info-circle");
+                direccion.addEventListener("click", (evento)=>{
+                    
+                    alert("MAMALO");
+
+                    //evento.preventDefault();
+                    return false;
+                }, false);
                 break;
             case 2:
                 direccion.classList.add("fa");

@@ -1,13 +1,13 @@
 .contenedor_login {
 
     z-index: 2;
-    padding: 3%;
+    padding: 0.5% 3%;
     top: 20%;
     left: 30%;
     width: 35%;
     position: absolute;
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--transparente_flx_login);
     display: flex;
     flex-direction: column;
 
@@ -15,7 +15,10 @@
 
 .contenedor_login h1 {
     
+    color: white;
+    letter-spacing: 1px;
     text-align: center;
+    margin: 1% 0%;
 
 }
 
@@ -31,7 +34,8 @@
     font-size: 22px;
     padding: 2%;
     border-radius: 25px;
-    background-color: var(--main_magenta);
+    background-color: var(--transparente);
+    border: 1px solid var(--main_magenta);
 
 }
 
@@ -63,7 +67,9 @@
   
 .container_flex input {
 
-    border: 1px solid rgb(89, 89, 89);
+    color: white;
+    background-color: var(--transparente_flx_login);
+    border: 1px solid var(--fondo_nav);
     font-size: 30px;
     padding: 2%;
 
@@ -96,11 +102,13 @@
     padding: 5%;
     text-align: center;
     font-size: 19px;
-    color: var(--main_magenta);
+    letter-spacing: 1px;
+    /*color: var(--main_magenta);*/
+    color: white;
     border: solid 1px var(--main_magenta);
     border-radius: 20px;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--transparente);
     transition: all 0.3s ease;
 
 }
@@ -108,7 +116,6 @@
 #contenedor_sin_login button:hover {
 
     background-color: var(--main_magenta);
-    color: white;
 
 }
 
@@ -133,7 +140,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(89, 89, 89);
+    border: 1px solid var(--fondo_nav);
 
 }
 

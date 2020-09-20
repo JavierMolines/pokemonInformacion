@@ -9,6 +9,16 @@
     z-index: 1000;
 }
 
+#cargando_busqueda_de_pokemon {
+
+    font-size: 120px;
+    color: var(--main_magenta);
+    -webkit-animation: girar var(--tiempo_rotacion) linear infinite;
+    -o-animation: girar var(--tiempo_rotacion) linear infinite;
+    animation: girar var(--tiempo_rotacion) linear infinite;
+
+}
+
 .showloading {
     height: 200px;
     width: 200px;

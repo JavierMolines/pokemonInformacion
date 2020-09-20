@@ -1,13 +1,40 @@
 function eliminar_popup_buscador() {
-    
-    let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
-    contenedor_buscador.style.display = "hidden";
-    contenedor_buscador.style.opacity = 0;
-    let quitar_buscador = setTimeout(()=>{
-        contenedor_buscador.remove();
-        clearTimeout(quitar_buscador);
-    }, 1600);
 
+    try {
+
+        let contenedor_buscador = document.getElementById("contenedor_filtro_pokemon");
+        contenedor_buscador.style.opacity = 0;
+        let quitar_buscador = setTimeout(()=>{
+            contenedor_buscador.remove();
+            clearTimeout(quitar_buscador);
+        }, 500);
+    
+    } catch (error) {}
+    
+}
+
+function validar_pokemon_en_pantalla(contenedor_con_los_pokemons) {
+
+    try {
+
+        var eliminaciones = [];
+
+        for (let contadorsito = 0; contadorsito < contenedor_con_los_pokemons.childNodes.length; contadorsito++) {
+            if (contenedor_con_los_pokemons.childNodes[contadorsito].id !== undefined) {
+                eliminaciones.push(contenedor_con_los_pokemons.childNodes[contadorsito].id);
+            }
+        }
+
+        if (eliminaciones.length > 0) {
+
+            for (let contadorsito = 0; contadorsito < eliminaciones.length; contadorsito++) {
+                let performance = document.getElementById(eliminaciones[contadorsito]);
+                contenedor_con_los_pokemons.removeChild(performance);
+            }
+
+        }
+
+    } catch (error) { console.log(error); }
 }
 
 function generar_colores_hexadecimal() {

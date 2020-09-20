@@ -6,5 +6,7 @@
     --tiempo_rotacion: 1.3s;
     --tiempo_rotacion_junior: 2.5s;
     --fondo_nav: rgb(230, 230, 230);
+    --transparente: rgba(0,0,0,0);
+    --transparente_flx_login: rgba(255, 255, 255, 0.103);
 
 }
