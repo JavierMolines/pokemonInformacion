@@ -74,7 +74,7 @@ nav {
 }
 
 #contenedor_direcciones_total > i:hover {
-    color: var(--icono_verde);
+    color: var(--main_magenta);
 }
 
 #titulo_presentacion_pagina {

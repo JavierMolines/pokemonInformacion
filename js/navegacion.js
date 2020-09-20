@@ -89,10 +89,6 @@ async function navegacion_logueado(navegador, usuario) {
         }
 
         let direccion = document.createElement("i");
-        direccion.addEventListener("click", (evento)=>{
-            evento.preventDefault();
-            return false;
-        }, false);
 
         switch (contador) {
             case 0:
@@ -102,9 +98,12 @@ async function navegacion_logueado(navegador, usuario) {
                 direccion.classList.add("fa");
                 direccion.classList.add("fa-info-circle");
                 direccion.addEventListener("click", (evento)=>{
-                    
-                    alert("MAMALO");
-
+                    let validar_existencia = document.getElementById("instrucciones_uso");
+                    if (validar_existencia == null || validar_existencia == undefined) {
+                        crear_informacion_uso();
+                    } else {
+                        validar_existencia.remove();
+                    }
                     //evento.preventDefault();
                     return false;
                 }, false);
