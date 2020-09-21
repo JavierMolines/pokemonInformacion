@@ -42,6 +42,10 @@ async function crear_popup(flujo) {
             icono.classList.add(objetoCreacionPopup.iconos[contador]);
             campo.classList.add("campo_editable_cliente");
 
+            campo.addEventListener("keydown", habilitar_boton);
+            campo.addEventListener("keypress", habilitar_boton);
+            campo.addEventListener("keyup", habilitar_boton);
+
             contenedor_icono.setAttribute("id", "contenedor_icono_login");
             contenedor_icono.append(icono);
 
@@ -60,24 +64,22 @@ async function crear_popup(flujo) {
         if (flujo === "iniciar_sesion_flujo") {
 
             mensaje_titulo = "Ingresar";
-            id_contenedor = "contenedor_login_validacion";
-            boton_titulo = await obtener_nombre_application("popupGeneradoIniciar");
-            invocacion = () => {
-                obtener_usuario_registrado();
-            }
+            id_contenedor  = "contenedor_login_validacion";
+            boton_titulo   = await obtener_nombre_application("popupGeneradoIniciar");
+            invocacion     = obtener_usuario_registrado;
 
         } else if (flujo === "registrarse_flujo") {
 
             mensaje_titulo = "Registro de Usuario";
-            id_contenedor = "contenedor_registrar_validacion";
-            boton_titulo = await obtener_nombre_application("popupGeneradoRegistrarse");
-            invocacion = () => {
-                registrar_usuario();
-            }
+            id_contenedor  = "contenedor_registrar_validacion";
+            boton_titulo   = await obtener_nombre_application("popupGeneradoRegistrarse");
+            invocacion     = registrar_usuario;
         }
 
         // AGREGAR PROPIEDADES FINALES
         titulo.innerHTML = mensaje_titulo;
+        ingresar.disabled = true;
+        ingresar.classList.add("btn_apagado_login");
         ingresar.innerHTML = boton_titulo;
         ingresar.onclick = invocacion;
         contenedor.setAttribute("id", id_contenedor);
@@ -131,8 +133,6 @@ async function registrar_usuario() {
         flx_toast.appendChild(generar_mensaje_toast(mensajeUsuario));
 
     }
-
-    limpiar_campos();
     
 }
 
@@ -145,19 +145,28 @@ async function agregar_usuario_registrado(usuario, password_repetir) {
 
 async function obtener_usuario_registrado() {
 
-    let campos = seleccionar_campos_credenciales();
-    let usuario = campos[0];
-    let passwor = campos[1];
+    let mostrar   = true;
+    let campos    = seleccionar_campos_credenciales();
+    let usuario   = campos[0];
+    let passwor   = campos[1];
 
     if (localStorage.length > 0) {
         let validacion = await obtener_usuario();
         if (atob(validacion[0]) === usuario.value && atob(validacion[1]) === passwor.value) {
+            mostrar = false;
             cambiar_vista();
         }
     }
 
-    usuario.value = "";
-    passwor.value = "";
+    // MENSAJE ERROR TOAST
+    if (mostrar === true) {
+
+        usuario.value = "";
+        passwor.value = "";
+        document.getElementById("mensaje_toast_usuario").appendChild(generar_mensaje_toast("CREDENCIALES INVALIDAS"));
+        habilitar_boton();
+
+    }
 
 }
 
@@ -221,11 +230,9 @@ function generar_mensaje_toast(mensaje) {
 
 function limpiar_campos() {
 
-    let campos_pantalla = seleccionar_campos_credenciales();
+    for (let campos of seleccionar_campos_credenciales()) {
 
-    for (let contador = 0; contador < campos_pantalla.length; contador++) {
-        
-        campos_pantalla[contador].value = "";
+        campos.value = "";
         
     }
     
@@ -264,4 +271,26 @@ function borrar_toast(identificador) {
         clearTimeout(tiempo_remover);
     }, 2000);
     
+}
+
+function habilitar_boton() {
+
+    let cuenta  = 0;
+    let boton   = document.querySelector(".contenedor_login button");
+    let campos  = document.querySelectorAll(".contenedor_login input");
+
+    for (let btn_individual of campos) {
+        let texto = btn_individual.value;
+        if(texto !== "" && texto !== null && texto !== undefined){
+            cuenta++;
+        }
+    }
+
+    let cls_add = cuenta === campos.length ? "btn_encendido_login" : "btn_apagado_login";
+    let cls_del = cuenta === campos.length ? "btn_apagado_login" : "btn_encendido_login";
+    let estado  = cuenta === campos.length ? false : true;
+    
+    boton.classList.replace(cls_del, cls_add);
+    boton.disabled = estado;
+
 }

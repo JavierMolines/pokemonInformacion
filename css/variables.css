@@ -8,5 +8,7 @@
     --fondo_nav: rgb(230, 230, 230);
     --transparente: rgba(0,0,0,0);
     --transparente_flx_login: rgba(255, 255, 255, 0.103);
+    --textos_login_flx: rgb(56, 54, 54);
+    --borde_magenta: 1px solid var(--main_magenta);
 
 }

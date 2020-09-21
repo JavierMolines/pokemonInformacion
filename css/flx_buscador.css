@@ -5,7 +5,7 @@
     flex-direction: column;
     position: fixed;
     top: 15%;
-    left: 28%;
+    left: 30%;
     padding: 0.5%;
     width: 35%;
     background-color: var(--fondo_nav);
@@ -53,12 +53,13 @@
 
 #contenedor_filtro_pokemon button {
 
+    padding: 1%;
     margin: 1% auto;
     width: 30%;
     border: none;
-    padding: 10px 40px;
+    text-align: center;
     border-radius: 10px;
-    font-size: 1.4em;
+    font-size: 1.3em;
 
 }
 
