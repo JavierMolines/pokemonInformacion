@@ -53,7 +53,7 @@ async function navegacion_no_logueado(navegador) {
 
 async function navegacion_logueado(navegador, usuario) {
 
-    let color_fondo_ambos = generar_colores_hexadecimal();
+    //let color_fondo_ambos = generar_colores_hexadecimal();
     let elemento_pokemons = document.createElement("div");
     let contenedor_logeado = document.createElement("div");
     let conte_titulo = document.createElement("div");
@@ -89,6 +89,7 @@ async function navegacion_logueado(navegador, usuario) {
         }
 
         let direccion = document.createElement("i");
+        direccion.addEventListener("click", manejar_vista_item);
 
         switch (contador) {
             case 0:
@@ -97,39 +98,13 @@ async function navegacion_logueado(navegador, usuario) {
             case 1:
                 direccion.classList.add("fa");
                 direccion.classList.add("fa-info-circle");
-                direccion.addEventListener("click", (evento)=>{
-                    let validar_existencia = document.getElementById("instrucciones_uso");
-                    if (validar_existencia == null || validar_existencia == undefined) {
-                        crear_informacion_uso();
-                    } else {
-                        validar_existencia.remove();
-                    }
-                    //evento.preventDefault();
-                    return false;
-                }, false);
-                break;
             case 2:
                 direccion.classList.add("fa");
                 direccion.classList.add("fa-search");
-                direccion.addEventListener("click", (evento)=>{
-                    let validar_existencia = document.getElementById("contenedor_filtro_pokemon");
-                    if (validar_existencia == null || validar_existencia == undefined) {
-                        crear_filtro_pokemon();
-                    } else {
-                        eliminar_popup_buscador();
-                    }
-                    //evento.preventDefault();
-                    return false;
-                }, false);
                 break;
             case 3:
                 direccion.classList.add("fa");
                 direccion.classList.add("fa-power-off");
-                direccion.addEventListener("click", (evento)=>{
-                    cerrar_sesion(document.getElementById("contenedor_logeado"), navegador);
-                    //evento.preventDefault();
-                    return false;
-                }, false);
                 break;
             default:
                 break;
@@ -187,24 +162,11 @@ function validar_continuacion_crear_popup(flujo) {
     
 }
 
-function cerrar_sesion(informacion, navegacion) {
+function cerrar_sesion() {
 
-    try {
-
-        var contenedor_pokemones = document.getElementById("contenedor_informacion_pokemon");
-        var filtro_pokemon = document.getElementById("contenedor_filtro_pokemon");
-
-        if (contenedor_pokemones !== null) {
-            contenedor_pokemones.remove();
-        }
-
-        if (filtro_pokemon !== null) {
-            eliminar_popup_buscador();
-        }
-
-    } catch (error) { console.log(error); }
-
-    navegacion.removeChild(informacion);
+    document.getElementById("contenedor_informacion_pokemon").remove();
+    document.getElementById("contenedor_logeado").remove();
+    validar_vista_mostrar_interfaz(25);
     navegacion_no_logueado(document.getElementById("contenedor_buscar_pokemon"));
 
 }
