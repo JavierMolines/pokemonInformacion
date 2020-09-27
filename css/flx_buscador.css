@@ -41,16 +41,6 @@
 
 }
 
-#contenedor_campos_input input:focus {
-
-    /*
-    color: gray;
-    border: 2px solid rgba(128, 128, 128, 0.925);
-    border-radius: 10px;
-    */
-
-}
-
 #contenedor_filtro_pokemon button {
 
     padding: 1%;

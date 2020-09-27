@@ -1,9 +1,10 @@
 #instrucciones_uso {
 
-    position : "fixed";
-    width : 100%;
-    height : 100%;
+    width : 85%;
     display : flex;
+    position: fixed;
+    top: 10%;
+    left: 5%;
     flex-direction : column;
     align-items : center;
     justify-content : center;
@@ -13,9 +14,17 @@
 #instrucciones_uso > div {
 
     border-radius: 20px;
-    width: 65%;
+    width: 70%;
     background-color: white;
     padding: 3%;
+
+}
+
+#instrucciones_uso > div > h1 {
+
+    margin: 0% 0%;
+    text-align: center;
+    letter-spacing: 3px;
 
 }
 
@@ -32,14 +41,6 @@
 
     width: 30%;
     height: 220px;
-
-}
-
-#instrucciones_uso > div > h1 {
-
-    margin: 0% 0%;
-    text-align: center;
-    letter-spacing: 3px;
 
 }
 
@@ -79,12 +80,48 @@
     
     }
 
+    #instrucciones_uso {
+
+        width : 100%;
+        top: 7%;
+        left: 0%;
+    
+    }
+
+    #instrucciones_uso > div {
+
+        width: 85%;
+        padding: 3%;
+
+    }
+
     #contenedor_imagenes > img {
 
         width: 100%;
-        height: 250px;
-        margin: 5% 0%;
+        height: 125px;
+        margin: 2% 0%;
         
+    }
+
+    #instrucciones_uso > div > h1 {
+
+        font-size: 20px;
+    
+    }
+
+    #instrucciones_uso > div > p {
+
+        font-size: 14px;
+        padding: 0%;
+        margin: 3% 0%;
+    
+    }
+
+    #botones_pagina > div > p {
+
+        margin: 0%;
+        padding: 0%;
+
     }
 
 }
