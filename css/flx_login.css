@@ -55,10 +55,11 @@
 
     display: grid;
     width: 100%;
-    grid-template-columns: 10% 85%;
+    grid-template-columns: 10% 90%;
+    border: var(--borde_magenta);
     justify-content: center;
     align-items: center;
-    margin: 2% auto;
+    margin: 0% auto;
 
 }
 
@@ -74,10 +75,20 @@
 .container_flex input {
 
     color: var(--textos_login_flx);
+    border: none;
     background-color: var(--transparente_flx_login);
-    border: var(--borde_magenta);
     font-size: 30px;
     padding: 2%;
+
+}
+
+.contenedor_icono_login_borde {
+
+    height: 97%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: var(--borde_magenta);
 
 }
 
@@ -137,16 +148,6 @@
     cursor: pointer;
     background-color: var(--main_magenta);
     
-}
-
-#contenedor_icono_login {
-
-    height: 97%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: var(--borde_magenta);
-
 }
 
 .contenedor_toast_error {

@@ -46,7 +46,7 @@ async function crear_popup(flujo) {
             campo.addEventListener("keypress", habilitar_boton);
             campo.addEventListener("keyup", habilitar_boton);
 
-            contenedor_icono.setAttribute("id", "contenedor_icono_login");
+            contenedor_icono.classList.add("contenedor_icono_login_borde");
             contenedor_icono.append(icono);
 
             contenedor_interno.classList.add("container_flex");
